@@ -140,7 +140,10 @@ class PostsDrawer extends React.Component {
         placement="right"
         width={window.outerWidth > 520 ? 500 : window.outerWidth}
         onClose={() => {
-          this.setState({ drawer: false });
+          const { range } = this.state
+          range.start = 1
+          range.end = 8
+          this.setState({ drawer: false, range });
         }}
         visible={drawer}
         style={{ textAlign: 'center' }}
