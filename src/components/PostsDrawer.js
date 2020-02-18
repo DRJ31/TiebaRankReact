@@ -130,7 +130,9 @@ class PostsDrawer extends React.Component {
       {
         title: '当日发帖数',
         dataIndex: 'posts',
-        render: text => detail ? text : (text / 10000).toFixed(2) + "W"
+        render: text => detail ? text : (text / 10000).toFixed(2) + "W",
+        sorter: (a, b) => a.posts - b.posts,
+        sortDirections: ['descend', 'ascend']
       }
     ];
 

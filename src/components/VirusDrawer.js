@@ -15,24 +15,34 @@ const cols = [
   {
     title: '确诊',
     dataIndex: 'diagnose',
-    render: (text) => <Text style={{ color: '#cf1322' }}>{text}</Text>
+    render: (text) => <Text style={{ color: '#cf1322' }}>{text}</Text>,
+    sorter: (a, b) => a.diagnose - b.diagnose,
+    sortDirections: ['descend', 'ascend']
   },
   {
     title: '疑似',
-    dataIndex: 'suspected'
+    dataIndex: 'suspected',
+    sorter: (a, b) => a.suspected - b.suspected,
+    sortDirections: ['descend', 'ascend']
   },
   {
     title: '治愈',
     dataIndex: 'cure',
-    render: (text) => <Text style={{ color: '#008dff' }}>{text}</Text>
+    render: (text) => <Text style={{ color: '#008dff' }}>{text}</Text>,
+    sorter: (a, b) => a.cure - b.cure,
+    sortDirections: ['descend', 'ascend']
   },
   {
     title: '死亡',
-    dataIndex: 'die'
+    dataIndex: 'die',
+    sorter: (a, b) => a.die - b.die,
+    sortDirections: ['descend', 'ascend']
   },
   {
     title: '总数',
-    dataIndex: 'total'
+    dataIndex: 'total',
+    sorter: (a, b) => a.total - b.total,
+    sortDirections: ['descend', 'ascend']
   }
 ];
 
@@ -187,7 +197,12 @@ class VirusDrawer extends React.Component {
                   <Statistic title="比例" value={this.getVirusRate(virus.global_stats.die)} suffix="%" />
                 </Col>
               </Row>
-              <Table columns={cols} dataSource={virus.prov_stats.sort(this.sortProvince)} rowKey='title' />
+              <Table
+                columns={cols}
+                dataSource={virus.prov_stats.sort(this.sortProvince)}
+                rowKey='title'
+                scroll={{ x: 500 }}
+              />
           </TabPane>
           <TabPane tab="国际数据" key="2" style={{ height: window.innerHeight - 165, overflow: 'auto' }}>
             <List dataSource={virus.other_stats} renderItem={item => <List.Item>{item.title}</List.Item>} />
