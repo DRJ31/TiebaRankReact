@@ -48,10 +48,7 @@ class App extends React.Component {
       posts: null,
       virus: null
     },
-    pagination: {
-      users: {},
-      posts: {}
-    }
+    pagination: {}
   };
 
   static childContextTypes = {
@@ -72,6 +69,7 @@ class App extends React.Component {
     axios.get('https://api.drjchn.com/api/tieba/users', {
       params: {
         page: 1,
+        pageSize: 10,
         token: encrypt('1')
       }
     })
@@ -87,10 +85,14 @@ class App extends React.Component {
             let days = res.data.days;
             this.setState({ days });
           });
-        const pagination = { ...this.state.pagination };
-        pagination.users.current = 1;
-        pagination.users.total = rsp.data.total;
-        pagination.users.showQuickJumper = true;
+        const { pagination }= this.state;
+        pagination.current = 1;
+        pagination.total = rsp.data.total;
+        pagination.showQuickJumper = true;
+        pagination.size = "small";
+        pagination.showSizeChanger = true;
+        pagination.pageSizeOptions = ['10', '20'];
+        pagination.pageSize = 10;
         this.setState({
           loading,
           pagination,
@@ -122,19 +124,21 @@ class App extends React.Component {
   };
 
   handleTableChange = pagination => {
-    const pager = { ...this.state.pagination };
-    pager.users.current = pagination.current;
+    const pager = this.state.pagination;
+    pager.current = pagination.current;
+    pager.pageSize = pagination.pageSize;
     this.setState({
       pagination: pager,
       spin: true
     });
     axios.get('https://api.drjchn.com/api/tieba/users', {
       params: {
-        page: pager.users.current,
-        token: encrypt(pager.users.current)
+        page: pager.current,
+        pageSize: pager.pageSize,
+        token: encrypt(pager.current)
       }
     }).then(rsp => {
-      pager.users.total = rsp.data.total;
+      pager.total = rsp.data.total;
       this.setState({
         pagination: pager,
         results: rsp.data.users,
@@ -292,8 +296,9 @@ class App extends React.Component {
                   dataSource={results}
                   columns={columns}
                   rowKey='rank'
-                  pagination={pagination.users}
+                  pagination={pagination}
                   onChange={this.handleTableChange}
+                  size={pagination.pageSize === 10 ? 'medium' : 'small'}
                   style={{
                     background: '#fff',
                     marginTop: 20
