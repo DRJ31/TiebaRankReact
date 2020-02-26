@@ -66,10 +66,11 @@ class App extends React.Component {
   constructor(...props) {
     super(...props);
     const loading = { ...this.state.loading };
+    const pageSize = window.localStorage.getItem("pageSize") || 10;
     axios.get('https://api.drjchn.com/api/tieba/users', {
       params: {
         page: 1,
-        pageSize: 10,
+        pageSize,
         token: encrypt('1')
       }
     })
@@ -92,7 +93,7 @@ class App extends React.Component {
         pagination.size = "small";
         pagination.showSizeChanger = true;
         pagination.pageSizeOptions = ['10', '20'];
-        pagination.pageSize = 10;
+        pagination.pageSize = pageSize;
         this.setState({
           loading,
           pagination,
@@ -127,6 +128,7 @@ class App extends React.Component {
     const pager = this.state.pagination;
     pager.current = pagination.current;
     pager.pageSize = pagination.pageSize;
+    window.localStorage.setItem("pageSize", pagination.pageSize);
     this.setState({
       pagination: pager,
       spin: true
