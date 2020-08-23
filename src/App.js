@@ -282,12 +282,12 @@ class App extends React.Component {
                   onClick={this.state.drawer.posts ? this.state.drawer.posts.getPostData : () => {}}
                   style={{ marginRight: 20 }}
                 >发帖统计</Button>
-                <Button
-                  type="danger"
-                  loading={loading.virus}
-                  onClick={this.state.drawer.virus ? this.state.drawer.virus.getVirusData : () => {}}
-                  style={window.outerWidth < 768 ? { marginTop: 10 } : { marginTop: 0 }}
-                >疫情实况</Button>
+                {/*<Button*/}
+                {/*  type="danger"*/}
+                {/*  loading={loading.virus}*/}
+                {/*  onClick={this.state.drawer.virus ? this.state.drawer.virus.getVirusData : () => {}}*/}
+                {/*  style={window.outerWidth < 768 ? { marginTop: 10 } : { marginTop: 0 }}*/}
+                {/*>疫情实况</Button>*/}
               </Row>
               <Spin
                 tip='加载中...'
