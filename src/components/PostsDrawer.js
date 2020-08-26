@@ -4,6 +4,7 @@ import moment from "moment";
 import { Axis, Chart, Geom } from "bizcharts";
 import axios from "axios";
 import PropTypes from 'prop-types';
+import NProgress from 'nprogress';
 
 const { Text, Title } = Typography;
 
@@ -69,6 +70,7 @@ class PostsDrawer extends React.Component {
     const loading = { ...this.state.loading };
     this.props.changeLoading(true);
     this.setState({ loading });
+    NProgress.start();
     axios.get('https://api.drjchn.com/api/tieba/post', {
       params: {
         date: moment().format('YYYY-MM-DD'),
@@ -102,6 +104,7 @@ class PostsDrawer extends React.Component {
           'total': this.state.posts,
           'posts': postNow
         });
+        NProgress.done();
         this.setState({
           postData,
           loading,

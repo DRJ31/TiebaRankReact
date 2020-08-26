@@ -4,6 +4,7 @@ import moment from "moment";
 import { Axis, Chart, Geom, Label } from "bizcharts";
 import axios from "axios";
 import PropTypes from 'prop-types';
+import NProgress from 'nprogress';
 
 const { Title } = Typography;
 
@@ -66,6 +67,7 @@ class UserDrawer extends React.Component {
   getStatisticalData = (date) => {
     this.setState({ day: date });
     this.props.changeLoading(true);
+    NProgress.start();
     axios.get('https://api.drjchn.com/api/tieba/users/distribution', {
       params: {
         token: this.context.encrypt(date.format("YYYY-MM-DD")),
@@ -92,6 +94,7 @@ class UserDrawer extends React.Component {
           percent.vip = Number((rsp.data.vip / rsp.data.total * 100).toFixed(2));
           percent.signin = Number((rsp.data.signin / rsp.data.total * 100).toFixed(2));
           this.props.changeLoading(false);
+          NProgress.done();
           this.setState({
             drawer: true,
             distribution,

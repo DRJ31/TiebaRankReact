@@ -23,6 +23,7 @@ import './App.css';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import encrypt from "./encrypt";
+import 'nprogress/nprogress.css';
 
 const { Content } = Layout;
 const { Text } = Typography;

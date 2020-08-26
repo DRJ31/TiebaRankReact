@@ -8,6 +8,7 @@
     "bizcharts": "^3.5.5",
     "crypto-js": "^4.0.0",
     "moment": "^2.24.0",
+    "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
