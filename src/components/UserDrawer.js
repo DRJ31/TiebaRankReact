@@ -1,5 +1,5 @@
 import React from "react";
-import { DatePicker, Divider, Drawer, Icon, Progress, Statistic, Table, Typography } from "antd";
+import { DatePicker, Divider, Drawer, Icon, Progress, Statistic, Table, Typography, message } from "antd";
 import moment from "moment";
 import { Axis, Chart, Geom, Label } from "bizcharts";
 import axios from "axios";
@@ -106,6 +106,8 @@ class UserDrawer extends React.Component {
       }
     }).catch(err => {
       this.props.changeLoading(false);
+      NProgress.done();
+      message.error("记录丢失，数据加载失败");
     });
   };
 
