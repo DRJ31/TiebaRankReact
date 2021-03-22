@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#yarn build
+tar Jcvf build.tar.xz build/
+scp build.tar.xz drj.app:~
+rm -f build.tar.xz
