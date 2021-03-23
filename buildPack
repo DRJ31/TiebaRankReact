@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#yarn build
+# yarn build
+cp build/genshin.ico build/favicon.ico
 tar Jcvf build.tar.xz build/
 scp build.tar.xz drj.app:~
 rm -f build.tar.xz
