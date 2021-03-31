@@ -1,5 +1,6 @@
 # Tieba Rank Frontend
 
+<a href="https://travis-ci.com/github/DRJ31/TiebaRankReact"><img alt="Travis (.com)" src="https://img.shields.io/travis/com/DRJ31/TiebaRankReact"></a>
 <a href="https://github.com/DRJ31/TiebaRankReact"><img src="https://img.shields.io/github/license/DRJ31/TiebaRankReact" alt="MIT License"></a>
 <a href="https://rank.mihoyo.moe"><img src="https://img.shields.io/uptimerobot/ratio/7/m787675534-9c46424818228fd6aa3134d5" alt="Up Ratio"></a>
 <a href="https://rank.mihoyo.moe"><img src="https://img.shields.io/uptimerobot/status/m787675534-9c46424818228fd6aa3134d5" alt="Site Status"></a>
