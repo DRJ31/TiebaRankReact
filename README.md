@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tieba Rank Frontend
+![GitHub](https://img.shields.io/github/license/DRJ31/TiebaRankReact)
+![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m787675534-9c46424818228fd6aa3134d5)
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m787675534-9c46424818228fd6aa3134d5)
 
 ## Available Scripts
 
