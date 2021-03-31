@@ -2,7 +2,7 @@ language: node_js
 node_js: '14'
 cache: yarn
 script:
-- yarn build
+- CI=false yarn build
 addons:
   ssh_known_hosts: drj.app
 after_success:
