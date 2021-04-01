@@ -16,8 +16,10 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run: |
+          ssh-keyscan -t rsa drj.app >> ~/.ssh/known_hosts
           scp demonist@drj.app:~/.ssh/secret.txt .
           openssl aes-256-cbc -d -pbkdf2 -in encrypt.js.enc -out src/encrypt.js -k $(cat secret.txt)
-          CI=false yarn build
+      - run: CI=false yarn build
+      - run: |
           tar Jcvf build.tar.xz build/
           scp build.tar.xz demonist@drj.app:~
