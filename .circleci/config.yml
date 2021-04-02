@@ -23,6 +23,7 @@ jobs:
           tar Jcvf build.tar.xz build/
           ssh-keyscan -t rsa drj.app >> ~/.ssh/known_hosts
           scp build.tar.xz demonist@drj.app:~
+          ssh demonist@drj.app < deploy.sh
 
 workflows:
   version: 2
