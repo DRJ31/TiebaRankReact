@@ -19,6 +19,7 @@ jobs:
       - run: openssl aes-256-cbc -d -pbkdf2 -in encrypt.js.enc -out src/encrypt.js -k $DECRYPT_KEY
       - run: CI=false yarn build
       - run: |
+          mv build/genshin.ico build/favicon.ico
           tar Jcvf build.tar.xz build/
           ssh-keyscan -t rsa drj.app >> ~/.ssh/known_hosts
           scp build.tar.xz demonist@drj.app:~
