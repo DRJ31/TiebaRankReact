@@ -15,7 +15,7 @@ jobs:
             - "f6:f7:d9:cf:34:03:0e:97:c1:d4:f3:88:d4:26:8f:95"
       - run: |
           sudo apt update
-          sudo apt install python3 python3-pip
+          sudo apt install python3 python3-pip curl
           pip3 install coscmd
       - node/install-yarn
       - node/install-packages:
@@ -31,6 +31,7 @@ jobs:
       - run: |
           coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
           coscmd upload -rs build/static /react/genshin/static
+          curl -L https://bark.drjchn.com/$BARK_KEY/Build\ Result/Rank\ build\ passed!
 
 workflows:
   version: 2
