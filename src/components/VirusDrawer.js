@@ -1,6 +1,7 @@
 import React from "react";
-import { BackTop, Col, Drawer, Icon, List, Row, Spin, Statistic, Table, Tabs, Tag, Timeline, Typography } from "antd";
-import moment from "moment";
+import { BackTop, Col, Drawer, List, Row, Spin, Statistic, Table, Tabs, Tag, Timeline, Typography } from "antd";
+import { LoadingOutlined } from '@ant-design/icons';
+import dayjs from "dayjs";
 import axios from "axios";
 import PropTypes from 'prop-types';
 
@@ -62,7 +63,7 @@ class VirusDrawer extends React.Component {
         cure: 0,
         die: 0,
         total: 0,
-        time: moment().format("YYYY-MM-DD HH:mm:ss")
+        time: dayjs().format("YYYY-MM-DD HH:mm:ss")
       },
       prov_stats: [],
       other_stats: [],
@@ -209,11 +210,11 @@ class VirusDrawer extends React.Component {
           </TabPane>
           <TabPane tab="实时播报" key="3" style={{ height: window.innerHeight - 165, overflow: 'auto' }}>
             <div id="tab" style={{ height: window.innerHeight - 165, overflow: 'auto' }}>
-            <Spin spinning={loading.news} indicator={<Icon type="loading" spin />} style={{ marginBottom: 15 }} />
+            <Spin spinning={loading.news} indicator={<LoadingOutlined spin />} style={{ marginBottom: 15 }} />
             <Timeline style={{ textAlign: 'left' }}>
               {virus.news.map(item => (
                 <Timeline.Item key={item.publish_time}>
-                  <Text style={{ marginRight: 10 }}>{moment(item.publish_time).fromNow()}</Text>
+                  <Text style={{ marginRight: 10 }}>{dayjs(item.publish_time).fromNow()}</Text>
                   <Text>{item.publish_time}</Text>
                   <Title level={4}>{item.title}</Title>
                   <Text>{item.content}</Text>

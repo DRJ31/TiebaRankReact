@@ -1,7 +1,9 @@
 import React from "react";
-import { DatePicker, Divider, Drawer, Icon, Progress, Statistic, Table, Typography, message } from "antd";
-import moment from "moment";
-import { Axis, Chart, Geom, Label } from "bizcharts";
+import { Divider, Drawer, Progress, Statistic, Table, Typography, message } from "antd";
+import { UserOutlined, ArrowUpOutlined, CopyOutlined, UserAddOutlined, CrownOutlined } from '@ant-design/icons';
+import DatePicker from "./DatePicker";
+import dayjs from "dayjs";
+import { Chart, Interval } from "bizcharts";
 import axios from "axios";
 import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
@@ -28,7 +30,7 @@ const cols = [
           color: text > 0 ? '#cf1322' : '#555',
           fontSize: 15
         }}
-        prefix={text > 0 && <Icon type="arrow-up" />}
+        prefix={text > 0 && <ArrowUpOutlined />}
       />
     )
   }
@@ -52,7 +54,7 @@ class UserDrawer extends React.Component {
       signin: 0
     },
     drawer: false,
-    day: moment()
+    day: dayjs()
   };
 
   static contextTypes = {
@@ -125,7 +127,7 @@ class UserDrawer extends React.Component {
       >
         <DatePicker
           onChange={this.getStatisticalData}
-          disabledDate={current => current < moment('20191107') || current > moment()}
+          disabledDate={current => current < dayjs('20191107') || current > dayjs()}
           value={day}
           allowClear={false}
           placeholder="选择日期"
@@ -137,28 +139,37 @@ class UserDrawer extends React.Component {
         <Divider />
         <Title level={4}>会员率</Title>
         <Progress type='circle' percent={percent.membership} />
-        <Statistic value={data.membership} prefix={<Icon type="user" />} style={{ marginTop: 10 }} />
+        <Statistic value={data.membership} prefix={<UserOutlined />} style={{ marginTop: 10 }} />
         <Divider />
         <Title level={4}>VIP比例</Title>
         <Progress type='circle' percent={percent.vip} strokeColor='#f5222d' />
-        <Statistic value={data.vip} prefix={<Icon type="crown" />} style={{ marginTop: 10 }} />
+        <Statistic value={data.vip} prefix={<CrownOutlined />} style={{ marginTop: 10 }} />
         <Divider />
         <Title level={4}>签到人数</Title>
         <Progress type='circle' percent={percent.signin} strokeColor='#fa8c16'
                   format={percent => percent > 0 ? percent + '%' : 'NaN'} />
-        <Statistic value={data.signin} prefix={<Icon type="usergroup-add" />} style={{ marginTop: 10 }}
+        <Statistic value={data.signin} prefix={<UserAddOutlined />} style={{ marginTop: 10 }}
                    formatter={value => value > 0 ? value : '无数据'} />
         <Divider />
         <Title level={4}>人均发帖数</Title>
-        <Statistic value={data.average} prefix={<Icon type="copy" />} style={{ marginTop: 10 }} />
+        <Statistic value={data.average} prefix={<CopyOutlined />} style={{ marginTop: 10 }} />
         <Divider />
         <Title level={4}>等级分布</Title>
-        <Chart height={300} data={distribution} scale={{ level: { range: [0.05, 1] } }} forceFit>
+        {/* <Chart height={300} data={distribution} scale={{ level: { range: [0.05, 1] } }} forceFit>
           <Axis name="level" />
           <Axis name="count" />
           <Geom type="interval" position="level*count">
             <Label content={['level*count', (name, value) => value]} />
           </Geom>
+        </Chart> */}
+        <Chart 
+          height={300} 
+          autoFit 
+          data={distribution} 
+          scale={{ count: { alias: '人数' }, level: { alias: '等级' } }}
+          padding={[50,30,30,50]} 
+        >
+          <Interval position="level*count" label="count" />
         </Chart>
         <Divider />
         <Title level={4}>等级排名</Title>

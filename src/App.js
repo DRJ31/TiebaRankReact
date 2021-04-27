@@ -7,7 +7,6 @@ import PostsDrawer from "./components/PostsDrawer";
 import PropTypes  from 'prop-types';
 import {
   Button,
-  Icon,
   Layout,
   message,
   PageHeader,
@@ -17,17 +16,18 @@ import {
   Table,
   Typography
 } from 'antd';
+import { LoadingOutlined, CrownFilled } from '@ant-design/icons';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import './App.css';
-import moment from 'moment';
-import 'moment/locale/zh-cn';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 import encrypt from "./encrypt";
 import 'nprogress/nprogress.css';
 
 const { Content } = Layout;
 const { Text } = Typography;
-moment.locale('zh-cn');
+dayjs.locale('zh-cn');
 
 class App extends React.Component {
   state = {
@@ -170,7 +170,7 @@ class App extends React.Component {
         title: '吧友',
         dataIndex: 'name',
         render: (text, record) => (
-          <a onClick={() => {
+          <Button type="text" onClick={() => {
             const loading = { ...this.state.loading };
             loading.search = true;
             this.setState({
@@ -206,10 +206,10 @@ class App extends React.Component {
             });
           }}>
             {record.member === 0 ? (record.nickname ? record.nickname : text) : (
-              <span><Icon type='crown' theme='filled' style={{ color: '#ffc53d' }} /> <Text
+              <span><CrownFilled style={{ color: '#ffc53d' }} /> <Text
                 type='danger'>{record.nickname ? record.nickname : text}</Text></span>
             )}
-          </a>
+          </Button>
         )
       },
       {
@@ -274,7 +274,7 @@ class App extends React.Component {
                   onClick={() => this.state.drawer.search ? this.state.drawer.search.setState({ visible: true }) : () => {}}
                 >搜索</Button>
                 <Button
-                  onClick={() => this.state.drawer.users ? this.state.drawer.users.getStatisticalData(moment()) : () => {}}
+                  onClick={() => this.state.drawer.users ? this.state.drawer.users.getStatisticalData(dayjs()) : () => {}}
                   loading={loading.users}
                   style={{ marginRight: 20 }}
                 >用户统计</Button>
@@ -293,7 +293,7 @@ class App extends React.Component {
               <Spin
                 tip='加载中...'
                 spinning={spin}
-                indicator={<Icon type='loading' />}
+                indicator={<LoadingOutlined />}
               >
                 <Table
                   dataSource={results}

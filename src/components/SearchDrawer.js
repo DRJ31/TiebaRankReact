@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Card, DatePicker, Drawer, Icon, Input, message, Select, Spin, Table, Typography } from "antd";
-import moment from "moment";
+import { Button, Card, DatePicker, Drawer, Input, message, Select, Spin, Table, Typography } from "antd";
+import { LoadingOutlined, CrownFilled } from '@ant-design/icons';
+import dayjs from "dayjs";
 import axios from "axios";
 import Swal from "sweetalert2";
 import PropTypes from 'prop-types';
@@ -14,15 +15,15 @@ const cols = [
     title: '事件',
     dataIndex: 'event',
     render: (text, record) => (
-      <a
+      <Button type="text"
         onClick={() => Swal.fire(text, record.description, 'info')}
-      >{text}</a>
+      >{text}</Button>
     )
   },
   {
     title: '描述',
     dataIndex: 'date',
-    render: (text, record) => `已${record.adj}${moment().diff(moment(text), "days") + 1}天`
+    render: (text, record) => `已${record.adj}${dayjs().diff(dayjs(text), "days") + 1}天`
   }
 ];
 
@@ -35,7 +36,7 @@ class SearchDrawer extends React.Component {
     loading: false,
     searchData: [],
     events: [],
-    event_date: moment(),
+    event_date: dayjs(),
     visible: false
   };
 
@@ -50,7 +51,7 @@ class SearchDrawer extends React.Component {
 
   handleDayChange = (date, dateString) => {
     let anniversary = this.state.anniversary;
-    if (date < moment(anniversary)) {
+    if (date < dayjs(anniversary)) {
       anniversary = "20190621"
     }
     this.setState({ event_date: date });
@@ -100,7 +101,7 @@ class SearchDrawer extends React.Component {
         title: '吧友',
         dataIndex: 'name',
         render: (text, record) => (
-          <a onClick={() => {
+          <Button type="text" onClick={() => {
             this.setState({
               spin: true,
               loading: true
@@ -132,10 +133,10 @@ class SearchDrawer extends React.Component {
             });
           }}>
             {record.member === 0 ? (record.nickname ? record.nickname : text) : (
-              <span><Icon type='crown' theme='filled' style={{ color: '#ffc53d' }} /> <Text
+              <span><CrownFilled style={{ color: '#ffc53d' }} /> <Text
                 type='danger'>{record.nickname ? record.nickname : text}</Text></span>
             )}
-          </a>
+          </Button>
         )
       },
       {
@@ -184,7 +185,7 @@ class SearchDrawer extends React.Component {
         <Spin
           tip='加载中...'
           spinning={loading}
-          indicator={<Icon type='loading' />}
+          indicator={<LoadingOutlined />}
         >
           <Table
             dataSource={searchData}
@@ -198,17 +199,17 @@ class SearchDrawer extends React.Component {
           />
         </Spin>
         <Card title="大事件">
-          {this.state.event_date >= moment('20190621') &&
+          {this.state.event_date >= dayjs('20190621') &&
           <div>
             <Select value={anniversary} style={{ width: 100, marginRight: 10 }}
                     onChange={anniversary => this.setState({ anniversary })}>
-              {this.props.anniversaries.map(ann => this.state.event_date >= moment(ann.date) && (
+              {this.props.anniversaries.map(ann => this.state.event_date >= dayjs(ann.date) && (
                 <Option value={ann.date} key={ann.date}>
                   {ann.event.match(/\(/g) ? ann.event.split("(")[0] : ann.event}
                 </Option>
               ))}
             </Select>
-            <Text>第 {this.state.event_date.diff(moment(anniversary), "days") + 1} 天</Text>
+            <Text>第 {this.state.event_date.diff(dayjs(anniversary), "days") + 1} 天</Text>
             <Button type="primary" style={{ marginLeft: 10 }} onClick={() => {
               this.setState({ drawer: true });
             }}>汇总</Button>

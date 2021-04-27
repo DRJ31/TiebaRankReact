@@ -1,7 +1,8 @@
 import React from "react";
-import { DatePicker, Divider, Drawer, Statistic, Switch, Table, Typography } from "antd";
-import moment from "moment";
-import { Axis, Chart, Geom } from "bizcharts";
+import { Divider, Drawer, Statistic, Switch, Table, Typography } from "antd";
+import DatePicker from "./DatePicker";
+import dayjs from "dayjs";
+import { Chart, Line } from "bizcharts";
 import axios from "axios";
 import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
@@ -10,11 +11,15 @@ const { Text, Title } = Typography;
 
 const scale = {
   posts: {
-    min: 0
+    min: 0,
+    alias: '单日总帖数'
+  },
+  total: {
+    alias: '总帖数'
   },
   date: {
     type: 'time',
-    formatter: time => moment(time).format('YY-MM-DD')
+    formatter: time => dayjs(time).format('YY-MM-DD')
   }
 };
 
@@ -29,8 +34,8 @@ class PostsDrawer extends React.Component {
     postData: [],
     posts: 0,
     day: {
-      start: moment().subtract(7, "days"),
-      end: moment().subtract(1, "days")
+      start: dayjs().subtract(7, "days"),
+      end: dayjs().subtract(1, "days")
     }
   };
 
@@ -54,12 +59,12 @@ class PostsDrawer extends React.Component {
     const range = { ...this.state.range };
     const data = this.state.postData;
     for (let i = 0; i < data.length; i++) {
-      if (moment(data[i].date).format('YYYY-MM-DD') === moment(day.start).format('YYYY-MM-DD')) {
+      if (dayjs(data[i].date).format('YYYY-MM-DD') === dayjs(day.start).format('YYYY-MM-DD')) {
         range.end = i + 1;
       }
     }
     for (let i = 0; i < data.length; i++) {
-      if (moment(data[i].date).format('YYYY-MM-DD') === moment(day.end).format('YYYY-MM-DD')) {
+      if (dayjs(data[i].date).format('YYYY-MM-DD') === dayjs(day.end).format('YYYY-MM-DD')) {
         range.start = i;
       }
     }
@@ -73,13 +78,13 @@ class PostsDrawer extends React.Component {
     NProgress.start();
     axios.get('https://api.drjchn.com/api/tieba/post', {
       params: {
-        date: moment().format('YYYY-MM-DD'),
-        token: this.context.encrypt(moment().format('YYYY-MM-DD'))
+        date: dayjs().format('YYYY-MM-DD'),
+        token: this.context.encrypt(dayjs().format('YYYY-MM-DD'))
       }
     }).then(rsp => {
       const day = { ...this.state.day };
-      day.end = moment().subtract(1, "days");
-      day.start = moment().subtract(7, "days");
+      day.end = dayjs().subtract(1, "days");
+      day.start = dayjs().subtract(7, "days");
       this.setState({
         posts: rsp.data.total,
         day
@@ -94,13 +99,13 @@ class PostsDrawer extends React.Component {
         let postData = resp.data.results;
         for (let i = 0; i < postData.length - 1; i++) {
           postData[i].posts = postData[i].total - postData[i + 1].total;
-          postData[i].date = moment(postData[i].date).valueOf();
+          postData[i].date = dayjs(postData[i].date).valueOf();
         }
-        postData[postData.length - 1].date = moment(postData[postData.length - 1].date).valueOf();
+        postData[postData.length - 1].date = dayjs(postData[postData.length - 1].date).valueOf();
         postData[postData.length - 1].posts = postData[postData.length - 1].total;
         const postNow = this.state.posts - postData[0].total;
         postData.splice(0, 0, {
-          'date': moment().valueOf(),
+          'date': dayjs().valueOf(),
           'total': this.state.posts,
           'posts': postNow
         });
@@ -122,7 +127,7 @@ class PostsDrawer extends React.Component {
         title: '日期',
         dataIndex: 'date',
         render: text => {
-          return moment(text).format('YYYY-MM-DD') + '(' + moment(text).format('dddd')[2] + ')';
+          return dayjs(text).format('YYYY-MM-DD') + '(' + dayjs(text).format('dddd')[2] + ')';
         }
       },
       {
@@ -169,7 +174,7 @@ class PostsDrawer extends React.Component {
           value={this.state.day.start}
           allowClear={false}
           placeholder="选择起始日期"
-          disabledDate={current => current < moment('20191106') || current >= this.state.day.end}
+          disabledDate={current => current < dayjs('20191106') || current >= this.state.day.end}
         />
         <DatePicker
           style={{ marginBottom: 20 }}
@@ -177,38 +182,34 @@ class PostsDrawer extends React.Component {
           value={this.state.day.end}
           allowClear={false}
           placeholder="选择结束日期"
-          disabledDate={current => current < moment('20191106') || current > moment() || (current <= this.state.day.start)}
+          disabledDate={current => current < dayjs('20191106') || current > dayjs() || (current <= this.state.day.start)}
         />
         <h3>发帖总数趋势</h3>
-        <Chart height={300} width={320} data={postData.slice(range.start, range.end)} scale={scale}>
-          <Axis name="date" />
-          <Axis name="total" />
-          <Geom type="line" position="date*total" />
-          <Geom
-            type="point"
+        <Chart 
+          scale={scale} 
+          padding={[0,30,30,80]} 
+          autoFit 
+          height={300}
+          data={postData.slice(range.start, range.end)} 
+        >
+          <Line
+            shape="smooth"
             position="date*total"
-            size={4}
-            shape={"circle"}
-            style={{
-              stroke: "#fff",
-              lineWidth: 1
-            }}
+            color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1) 1:rgba(215, 0, 255, 1)"
           />
         </Chart>
         <h3>单日发帖趋势</h3>
-        <Chart height={300} width={320} data={postData.slice(range.start, range.end)} scale={scale}>
-          <Axis name="date" />
-          <Axis name="posts" />
-          <Geom type="line" position="date*posts" />
-          <Geom
-            type="point"
+        <Chart 
+          scale={scale} 
+          padding={[0,30,30,80]} 
+          autoFit 
+          height={300}
+          data={postData.slice(range.start, range.end)} 
+        >
+          <Line
+            shape="smooth"
             position="date*posts"
-            size={4}
-            shape={"circle"}
-            style={{
-              stroke: "#fff",
-              lineWidth: 1
-            }}
+            color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1) 1:rgba(215, 0, 255, 1)"
           />
         </Chart>
         <Divider />
