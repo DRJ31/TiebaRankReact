@@ -177,7 +177,7 @@ class App extends React.Component {
               spin: true,
               loading
             });
-            axios.post('https://api.drjchn.com/api/tieba/user', {
+            axios.post('https://api.drjchn.com/api/v2/tieba/user', {
               link: record.link,
               token: encrypt(record.link)
             }).then(rsp => {

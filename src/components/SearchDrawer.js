@@ -106,7 +106,7 @@ class SearchDrawer extends React.Component {
               spin: true,
               loading: true
             });
-            axios.post('https://api.drjchn.com/api/tieba/user', {
+            axios.post('https://api.drjchn.com/api/v2/tieba/user', {
               link: record.link,
               token: this.context.encrypt(record.link)
             }).then(rsp => {
