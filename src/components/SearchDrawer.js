@@ -116,7 +116,7 @@ class SearchDrawer extends React.Component {
                 loading: false
               }, () => {
                 const nickname = rsp.data.user.nickname;
-                const title = record.member === 0 ? nickname :
+                const title = !record.member ? nickname :
                   '<span><i aria-label="icon: crown" class="anticon anticon-crown" style="color: rgb(255, 197, 61);"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="crown" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M899.6 276.5L705 396.4 518.4 147.5a8.06 8.06 0 0 0-12.9 0L319 396.4 124.3 276.5c-5.7-3.5-13.1 1.2-12.2 7.9L188.5 865c1.1 7.9 7.9 14 16 14h615.1c8 0 14.9-6 15.9-14l76.4-580.6c.8-6.7-6.5-11.4-12.3-7.9zM512 734.2c-62.1 0-112.6-50.5-112.6-112.6S449.9 509 512 509s112.6 50.5 112.6 112.6S574.1 734.2 512 734.2zm0-160.9c-26.6 0-48.2 21.6-48.2 48.3 0 26.6 21.6 48.3 48.2 48.3s48.2-21.6 48.2-48.3c0-26.6-21.6-48.3-48.2-48.3z"></path></svg></i> <span class="ant-typography ant-typography-danger">' + nickname + '</span></span>';
                 Swal.fire({
                   imageUrl: this.state.link,
@@ -132,7 +132,7 @@ class SearchDrawer extends React.Component {
               });
             });
           }}>
-            {record.member === 0 ? (record.nickname ? record.nickname : text) : (
+            {!record.member ? (record.nickname ? record.nickname : text) : (
               <span><CrownFilled style={{ color: '#ffc53d' }} /> <Text
                 type='danger'>{record.nickname ? record.nickname : text}</Text></span>
             )}
