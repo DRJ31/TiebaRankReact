@@ -30,7 +30,8 @@ jobs:
           ssh demonist@drj.app < deploy.sh
       - run: |
           coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
-          coscmd upload -rs --delete build/static /react/genshin/static
+          coscmd delete -r /react/genshin/static
+          coscmd upload -r build/static /react/genshin/static
           curl -L https://uich.cc/5iavbeH6 | bash
 
 workflows:
