@@ -77,12 +77,12 @@ class App extends React.Component {
     })
       .then(rsp => {
         loading.page = false;
-        axios.get('https://api.drjchn.com/api/tieba/anniversary')
+        axios.get('https://api.drjchn.com/api/v2/tieba/anniversary')
           .then(res => {
             let anniversaries = res.data.anniversaries;
             this.setState({ anniversaries });
           });
-        axios.get('https://api.drjchn.com/api/tieba/events')
+        axios.get('https://api.drjchn.com/api/v2/tieba/events')
           .then(res => {
             let days = res.data.days;
             this.setState({ days });

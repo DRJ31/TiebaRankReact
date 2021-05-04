@@ -55,7 +55,7 @@ class SearchDrawer extends React.Component {
       anniversary = "20190621"
     }
     this.setState({ event_date: date });
-    axios.get('https://api.drjchn.com/api/tieba/event', {
+    axios.get('https://api.drjchn.com/api/v2/tieba/event', {
       params: {
         date: dateString,
         token: this.context.encrypt(dateString)
