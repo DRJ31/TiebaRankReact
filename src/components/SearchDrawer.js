@@ -73,7 +73,7 @@ class SearchDrawer extends React.Component {
       return;
     }
     this.setState({ loading: true });
-    axios.get('https://api.drjchn.com/api/tieba/user', {
+    axios.get('https://api.drjchn.com/api/v2/tieba/user', {
       params: {
         keyword: keyword,
         token: this.context.encrypt(keyword)
