@@ -1,6 +1,6 @@
 import React from "react";
 import { Divider, Drawer, Progress, Statistic, Table, Typography, message } from "antd";
-import { UserOutlined, ArrowUpOutlined, CopyOutlined, UserAddOutlined, CrownOutlined } from '@ant-design/icons';
+import { UserOutlined, ArrowUpOutlined, ArrowDownOutlined, CopyOutlined, UserAddOutlined, CrownOutlined } from '@ant-design/icons';
 import DatePicker from "./DatePicker";
 import dayjs from "dayjs";
 import { Chart, Interval } from "bizcharts";
@@ -10,6 +10,16 @@ import NProgress from 'nprogress';
 
 const { Title } = Typography;
 
+const selectColor = (num) => {
+  switch (num) {
+    case num > 0:
+      return "#cf1322"
+    case num < 0:
+      return "#3f8600"
+    default:
+      return "#555"
+  }
+}
 
 const cols = [
   {
@@ -27,10 +37,10 @@ const cols = [
       <Statistic
         value={text}
         valueStyle={{
-          color: text > 0 ? '#cf1322' : '#555',
+          color: selectColor(text),
           fontSize: 15
         }}
-        prefix={text > 0 && <ArrowUpOutlined />}
+        prefix={text !== 0 && text > 0 ? <ArrowUpOutlined /> : <ArrowDownOutlined />}
       />
     )
   }
