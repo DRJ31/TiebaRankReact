@@ -11,13 +11,12 @@ import NProgress from 'nprogress';
 const { Title } = Typography;
 
 const selectColor = (num) => {
-  switch (num) {
-    case num > 0:
-      return "#cf1322"
-    case num < 0:
-      return "#3f8600"
-    default:
-      return "#555"
+  if (num > 0) {
+    return "#cf1322"
+  } else if (num < 0) {
+    return "#3f8600"
+  } else {
+    return "#555"
   }
 }
 
@@ -35,12 +34,12 @@ const cols = [
     dataIndex: 'delta',
     render: text => (
       <Statistic
-        value={text}
+        value={Math.abs(text)}
         valueStyle={{
           color: selectColor(text),
           fontSize: 15
         }}
-        prefix={text !== 0 && text > 0 ? <ArrowUpOutlined /> : <ArrowDownOutlined />}
+        prefix={parseInt(text) !== 0 && (text > 0 ? <ArrowUpOutlined /> : <ArrowDownOutlined />)}
       />
     )
   }
