@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Card, DatePicker, Drawer, Input, message, Select, Spin, Table, Typography } from "antd";
+import { Button, Card, Drawer, Input, message, Select, Spin, Table, Typography } from "antd";
+import DatePicker from "./DatePicker";
 import { LoadingOutlined, CrownFilled } from '@ant-design/icons';
 import dayjs from "dayjs";
 import axios from "axios";
@@ -9,23 +10,6 @@ import PropTypes from 'prop-types';
 const { Search } = Input;
 const { Text, Paragraph } = Typography;
 const { Option } = Select;
-
-const cols = [
-  {
-    title: '事件',
-    dataIndex: 'event',
-    render: (text, record) => (
-      <Button type="text"
-        onClick={() => Swal.fire(text, record.description, 'info')}
-      >{text}</Button>
-    )
-  },
-  {
-    title: '描述',
-    dataIndex: 'date',
-    render: (text, record) => `已${record.adj}${dayjs().diff(dayjs(text), "days") + 1}天`
-  }
-];
 
 class SearchDrawer extends React.Component {
   state = {
@@ -40,6 +24,23 @@ class SearchDrawer extends React.Component {
     visible: false
   };
 
+  cols = [
+    {
+      title: '事件',
+      dataIndex: 'event',
+      render: (text, record) => (
+          <Button type="text"
+                  onClick={() => Swal.fire(text, record.description, 'info')}
+          >{text}</Button>
+      )
+    },
+    {
+      title: '描述',
+      dataIndex: 'date',
+      render: (text, record) => `已${record.adj}${this.state.event_date.diff(dayjs(text), "days") + 1}天`
+    }
+  ];
+
   static contextTypes = {
     onRef: PropTypes.func,
     encrypt: PropTypes.func
@@ -47,6 +48,16 @@ class SearchDrawer extends React.Component {
 
   componentDidMount() {
     this.context.onRef(this, 'search');
+    const today = dayjs().format("YYYY-MM-DD");
+    axios.get('https://api.drjchn.com/api/v2/tieba/event', {
+      params: {
+        date: today,
+        token: this.context.encrypt(today)
+      }
+    }).then(res => {
+      let events = res.data.event.length > 0 ? res.data.event : ["无"];
+      this.setState({ events });
+    });
   }
 
   handleDayChange = (date, dateString) => {
@@ -168,7 +179,7 @@ class SearchDrawer extends React.Component {
           visible={drawer}
           style={{ textAlign: 'center' }}
         >
-          <Table columns={cols} dataSource={this.props.anniversaries} rowKey='event' />
+          <Table columns={this.cols} dataSource={this.props.anniversaries} rowKey='event' />
         </Drawer>
         <Search
           placeholder='搜索用户'
@@ -220,6 +231,7 @@ class SearchDrawer extends React.Component {
             value={this.state.event_date}
             allowClear={false}
             placeholder="选择日期"
+            disabledDate={current => current > dayjs()}
             dateRender={current => {
               const days = this.props.days;
               const style = {};
@@ -228,7 +240,7 @@ class SearchDrawer extends React.Component {
                 style.borderRadius = '50%';
               }
               return (
-                <div className="ant-calendar-date" style={style}>
+                <div className="ant-picker-cell-inner" style={style}>
                   {current.date()}
                 </div>
               );
