@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Drawer, Input, message, Select, Spin, Table, Typography } from "antd";
 import DatePicker from "./DatePicker";
-import { LoadingOutlined, CrownFilled } from '@ant-design/icons';
+import { LoadingOutlined, CrownFilled, InfoCircleOutlined } from '@ant-design/icons';
 import dayjs from "dayjs";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -31,7 +31,7 @@ class SearchDrawer extends React.Component {
       render: (text, record) => (
           <Button type="text"
                   onClick={() => Swal.fire(text, record.description, 'info')}
-          >{text}</Button>
+          >{text}<InfoCircleOutlined style={{ color: "#3fc3ee" }} /></Button>
       )
     },
     {
