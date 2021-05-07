@@ -5,6 +5,10 @@
 <a href="https://rank.mihoyo.moe"><img src="https://img.shields.io/uptimerobot/ratio/7/m787675534-9c46424818228fd6aa3134d5" alt="Up Ratio"></a>
 <a href="https://rank.mihoyo.moe"><img src="https://img.shields.io/uptimerobot/status/m787675534-9c46424818228fd6aa3134d5" alt="Site Status"></a>
 
+A website to show rank of users and other statistical data of Genshin Tieba.
+
+The backend of the project is [DRJ31/tiebarankgo](https://github.com/DRJ31/tiebarankgo)
+
 ## Available Scripts
 
 In the project directory, you can run:
