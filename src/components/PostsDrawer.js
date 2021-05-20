@@ -37,7 +37,7 @@ class PostsDrawer extends React.Component {
       start: dayjs().subtract(7, "days"),
       end: dayjs().subtract(1, "days")
     }
-  };
+  }
 
   static contextTypes = {
     onRef: PropTypes.func,
@@ -168,7 +168,7 @@ class PostsDrawer extends React.Component {
           formatter={value => detail ? value : (value / 10000).toFixed(2) + "W"}
         />
         <Divider />
-        <Title level={4}>发帖统计图表</Title>
+        <Title level={3}>发帖统计图表</Title>
         <DatePicker
           onChange={((date, dateString) => this.handleDateChange(date, dateString, true))}
           value={this.state.day.start}
@@ -184,7 +184,7 @@ class PostsDrawer extends React.Component {
           placeholder="选择结束日期"
           disabledDate={current => current < dayjs('20191106') || current > dayjs() || (current <= this.state.day.start)}
         />
-        <h3>发帖总数趋势</h3>
+        <Title level={4}>发帖总数趋势</Title>
         <Chart 
           scale={scale} 
           padding={[0,30,30,80]} 
@@ -198,7 +198,7 @@ class PostsDrawer extends React.Component {
             color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1) 1:rgba(215, 0, 255, 1)"
           />
         </Chart>
-        <h3>单日发帖趋势</h3>
+        <Title level={4}>单日发帖趋势</Title>
         <Chart 
           scale={scale} 
           padding={[0,30,30,80]} 
@@ -213,6 +213,7 @@ class PostsDrawer extends React.Component {
           />
         </Chart>
         <Divider />
+        <Title level={4}>发帖数据记录</Title>
         <Table
           dataSource={postData}
           columns={cols}

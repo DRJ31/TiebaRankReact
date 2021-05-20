@@ -4,6 +4,7 @@ import SearchDrawer from './components/SearchDrawer';
 import VirusDrawer from "./components/VirusDrawer";
 import UserDrawer from "./components/UserDrawer";
 import PostsDrawer from "./components/PostsDrawer";
+import IncomeDrawer from "./components/IncomeDrawer";
 import PropTypes  from 'prop-types';
 import {
   Button,
@@ -38,7 +39,8 @@ class App extends React.Component {
       users: false,
       search: false,
       posts: false,
-      virus: false
+      virus: false,
+      income: false
     },
     spin: false,
     contentHeight: null,
@@ -47,7 +49,8 @@ class App extends React.Component {
       users: null,
       search: null,
       posts: null,
-      virus: null
+      virus: null,
+      income: null
     },
     pagination: {}
   };
@@ -265,6 +268,14 @@ class App extends React.Component {
               }}
             />
 
+            <IncomeDrawer
+                changeLoading={(boolean) => {
+                  const loading = this.state.loading;
+                  loading.income = boolean;
+                  this.setState({ loading })
+                }}
+            />
+
             {/*Main Part of Page*/}
             <Skeleton active loading={loading.page}>
               <Row>
@@ -283,6 +294,11 @@ class App extends React.Component {
                   onClick={this.state.drawer.posts ? this.state.drawer.posts.getPostData : () => {}}
                   style={{ marginRight: 20 }}
                 >发帖统计</Button>
+                <Button
+                    loading={loading.income}
+                    onClick={this.state.drawer.income ? this.state.drawer.income.fetchData : () => {}}
+                    style={{ marginRight: 20 }}
+                >流水统计</Button>
                 {/*<Button*/}
                 {/*  type="danger"*/}
                 {/*  loading={loading.virus}*/}
