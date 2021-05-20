@@ -129,7 +129,8 @@ class IncomeDrawer extends React.Component {
                 title: '流水',
                 dataIndex: 'income',
                 key: 'income',
-                render: text => detail ? text : (text / 10000).toFixed(2) + "W"
+                render: text => detail ? text : (text / 10000).toFixed(2) + "W",
+                sorter: (a, b) => a.income - b.income
             }
         ];
 

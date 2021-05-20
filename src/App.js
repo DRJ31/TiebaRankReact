@@ -297,7 +297,7 @@ class App extends React.Component {
                 <Button
                     loading={loading.income}
                     onClick={this.state.drawer.income ? this.state.drawer.income.fetchData : () => {}}
-                    style={{ marginRight: 20 }}
+                    style={{ marginRight: 20, marginTop: window.outerWidth < 768 ? 10 : 0 }}
                 >流水统计</Button>
                 {/*<Button*/}
                 {/*  type="danger"*/}
