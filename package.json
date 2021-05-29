@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^4.15.5",
+    "antd": "^4.16.0",
     "axios": "^0.21.1",
     "bizcharts": "^4.1.10",
     "crypto-js": "^4.0.0",
-    "dayjs": "^1.10.4",
+    "dayjs": "^1.10.5",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "sweetalert2": "^10.16.7",
+    "sweetalert2": "^11.0.12",
     "yarn": "^1.19.1"
   },
   "scripts": {
