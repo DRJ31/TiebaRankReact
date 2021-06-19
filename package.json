@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^4.16.2",
+    "antd": "^4.16.3",
     "axios": "^0.21.1",
     "bizcharts": "^4.1.10",
     "crypto-js": "^4.0.0",
