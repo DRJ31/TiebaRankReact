@@ -152,19 +152,6 @@
     detect-browser "^5.1.0"
     tslib "^2.0.3"
 
-"@antv/g-canvas@0.5.6":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@antv/g-canvas/-/g-canvas-0.5.6.tgz#7266dd9eb788a87821ee740059202e85a393c24c"
-  integrity sha512-r6f6KqYuNZWunf2Vnf1ACopn8aic6TBFhaN3XuckenhQNqR+/PI/4Mft7z14zo7WH58X2Xs2Npq9awJXBEUzaw==
-  dependencies:
-    "@antv/g-base" "^0.5.3"
-    "@antv/g-math" "^0.1.6"
-    "@antv/matrix-util" "^3.1.0-beta.1"
-    "@antv/path-util" "~2.0.5"
-    "@antv/util" "~2.0.0"
-    gl-matrix "^3.0.0"
-    tslib "^2.0.3"
-
 "@antv/g-canvas@~0.5.10":
   version "0.5.10"
   resolved "https://registry.yarnpkg.com/@antv/g-canvas/-/g-canvas-0.5.10.tgz#ad19a1dcd19edd12d29539e1dc5b521585b437c6"
@@ -186,7 +173,7 @@
     "@antv/util" "~2.0.0"
     gl-matrix "^3.0.0"
 
-"@antv/g-svg@0.5.6", "@antv/g-svg@~0.5.6":
+"@antv/g-svg@~0.5.6":
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/@antv/g-svg/-/g-svg-0.5.6.tgz#70b2fa980c431b39ad3c5b4b53e36a1d60957d65"
   integrity sha512-Xve1EUGk4HMbl2nq4ozR4QLh6GyoZ8Xw/+9kHYI4B5P2lIUQU95MuRsaLFfW5NNpZDx85ZeH97tqEmC9L96E7A==
@@ -197,31 +184,10 @@
     detect-browser "^5.0.0"
     tslib "^2.0.3"
 
-"@antv/g2@4.1.14":
-  version "4.1.14"
-  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-4.1.14.tgz#8c7f380aec2a66ca3f012645c5624b40aa0f62da"
-  integrity sha512-JdU+0suxkDqjTZNyG915zQ7eM+bdT2fHV48VGc1LvCroUHzCncCnbx5HZ19aZhvuij2hM6eh52vb8mwIXIzMBw==
-  dependencies:
-    "@antv/adjust" "^0.2.1"
-    "@antv/attr" "^0.3.1"
-    "@antv/color-util" "^2.0.2"
-    "@antv/component" "^0.8.7"
-    "@antv/coord" "^0.3.0"
-    "@antv/dom-util" "^2.0.2"
-    "@antv/event-emitter" "~0.1.0"
-    "@antv/g-base" "0.5.6"
-    "@antv/g-canvas" "0.5.6"
-    "@antv/g-svg" "0.5.6"
-    "@antv/matrix-util" "^3.1.0-beta.1"
-    "@antv/path-util" "^2.0.3"
-    "@antv/scale" "^0.3.7"
-    "@antv/util" "~2.0.5"
-    tslib "^2.0.0"
-
-"@antv/g2@^4.1.0":
-  version "4.1.16"
-  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-4.1.16.tgz#b6d4f92c49215c5a95b05db04402f1f2f3d95efc"
-  integrity sha512-7NrXdusVSKKHobkxzDG+TNZLPWFdxggrPxfdX2tuG9LHgabv0V6kId+LlzOEIDkUaT7OYVp0iq5Hu/BgGg5K/A==
+"@antv/g2@4.1.19":
+  version "4.1.19"
+  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-4.1.19.tgz#d0da4a883e7674db463fd090cac7498237916730"
+  integrity sha512-dRO32/8TcdsalkQ1f4IHywLsfFNj2+seun+RzdGsV7B9yvITFeZN6PQlscCzCUuE0KljMIbCHpVhuLzp3bWR6A==
   dependencies:
     "@antv/adjust" "^0.2.1"
     "@antv/attr" "^0.3.1"
@@ -239,15 +205,37 @@
     "@antv/util" "~2.0.5"
     tslib "^2.0.0"
 
-"@antv/g2plot@2.3.18":
-  version "2.3.18"
-  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.3.18.tgz#bfecd0bfc1bec33204898393d0fc8476c6ad4aae"
-  integrity sha512-Zs0anNXwcd8wSml688vnDHuTE2C6x9gy60ShksFcAHvi0YULxYWDFcrdqcS4GRC9FsholuPbhzi08K798K0Yvw==
+"@antv/g2@^4.1.19":
+  version "4.1.20"
+  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-4.1.20.tgz#4495b626aa05272634bdb563fe83a7f335ddbe6c"
+  integrity sha512-Gs+Mlm/tiAIuRN7dQeQ51Vuou424ntds+sPGz+9k0SrHjPm5Q9+FnbUdmkDHqixrawupT6RNY6Cbmtt7s4BT0A==
+  dependencies:
+    "@antv/adjust" "^0.2.1"
+    "@antv/attr" "^0.3.1"
+    "@antv/color-util" "^2.0.2"
+    "@antv/component" "^0.8.7"
+    "@antv/coord" "^0.3.0"
+    "@antv/dom-util" "^2.0.2"
+    "@antv/event-emitter" "~0.1.0"
+    "@antv/g-base" "~0.5.6"
+    "@antv/g-canvas" "~0.5.10"
+    "@antv/g-svg" "~0.5.6"
+    "@antv/matrix-util" "^3.1.0-beta.1"
+    "@antv/path-util" "^2.0.3"
+    "@antv/scale" "^0.3.7"
+    "@antv/util" "~2.0.5"
+    tslib "^2.0.0"
+
+"@antv/g2plot@2.3.25":
+  version "2.3.25"
+  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.3.25.tgz#0db68128b65188cc9503add2feacadbc1703dafc"
+  integrity sha512-WSkD9dP+JVTxDv4OcAMzLqGrY4pHXVOS9urK2Hpx8NjTqFj36KYAXY5XE03MoDQqiUU3giE/DhOZvhCgCHCODw==
   dependencies:
     "@antv/event-emitter" "^0.1.2"
-    "@antv/g2" "^4.1.0"
+    "@antv/g2" "^4.1.19"
     d3-hierarchy "^2.0.0"
     d3-regression "^1.3.5"
+    pdfast "^0.2.0"
     size-sensor "^1.0.1"
     tslib "^2.0.3"
 
@@ -1871,6 +1859,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@juggle/resize-observer@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.3.1.tgz#b50a781709c81e10701004214340f25475a171a0"
+  integrity sha512-zMM9Ds+SawiUkakS7y94Ymqx+S0ORzpG3frZirN3l+UlXUmSUR7hF4wxCVqW+ei94JzV5kt0uXBcoOEAuiydrw==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -2694,10 +2687,10 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-antd@^4.16.3:
-  version "4.16.6"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.16.6.tgz#5f79fa103bbd8be30fac74142ef1bbf8bc872491"
-  integrity sha512-E7T+GClZPGjPUfmiuTbQK4+OfvsQ/Ksi5C71Bm4dwz1wlbJ4CqfxhIlpBypod9fe8mCI+bVAjtBoUpR1q/6Sow==
+antd@^4.16.7:
+  version "4.16.7"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.16.7.tgz#c51fb143288adb8b008a786efe8d5df13320ac4c"
+  integrity sha512-9XQnTpQ21zqnXWAvFvt1mm0j5+r4E7N/eK0kSEBqxuoTCzTrrn5iwhXFEZ2htJx9QJFlihST/T1Wd8JzRf9J3Q==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.6.2"
@@ -3283,22 +3276,22 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bizcharts@^4.1.10:
-  version "4.1.10"
-  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-4.1.10.tgz#9ce8b761e5ea41abde58f698f4a7729b25c47a64"
-  integrity sha512-kE8xfkufIRXPEUrml9I5aaNW22xl4CPRCYec/xjSeod/yI2l+TnkmJBD+fcRUUgUEvxpo3bZOzUblMAv+Wi1zg==
+bizcharts@^4.1.11:
+  version "4.1.11"
+  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-4.1.11.tgz#20bece2f31cf3f846168de2ff409e58fa3ecc06d"
+  integrity sha512-uvO1EPTtcP8YJ8VXX+veDosTmg9RYKblABZ1RkK14SG12OFtQYl/6zv7MKtNrTEsS0+TgAu2vjBvCS5/6Fd8pA==
   dependencies:
     "@antv/component" "*"
-    "@antv/g2" "4.1.14"
-    "@antv/g2plot" "2.3.18"
+    "@antv/g2" "4.1.19"
+    "@antv/g2plot" "2.3.25"
     "@antv/util" "*"
     "@babel/plugin-transform-modules-commonjs" "^7.12.1"
     "@babel/plugin-transform-runtime" "^7.12.10"
+    "@juggle/resize-observer" "^3.3.1"
     babel-plugin-transform-replace-object-assign "^2.0.0"
     d3-color "^1.4.1"
     react-error-boundary "3.0.2"
     react-reconciler "^0.25.1"
-    resize-observer-polyfill "^1.5.1"
     simple-statistics "^7.1.0"
     warning "^4.0.3"
 
@@ -4599,10 +4592,15 @@ date-fns@2.x:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.22.1.tgz#1e5af959831ebb1d82992bf67b765052d8f0efc4"
   integrity sha512-yUFPQjrxEmIsMqlHhAhmxkuH769baF21Kk+nZwZGyrMoyLA+LugaQtC0+Tqf9CBUUULWwUJt6Q5ySI3LJDDCGg==
 
-dayjs@1.x, dayjs@^1.10.5:
+dayjs@1.x:
   version "1.10.5"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.5.tgz#5600df4548fc2453b3f163ebb2abbe965ccfb986"
   integrity sha512-BUFis41ikLz+65iH6LHQCDm4YPMj5r1YFLdupPIyM4SGcXMmtiLQ7U37i+hGS8urIuqe7I/ou3IS1jVc4nbN4g==
+
+dayjs@^1.10.6:
+  version "1.10.6"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
+  integrity sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -8741,6 +8739,11 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+pdfast@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/pdfast/-/pdfast-0.2.0.tgz#8cbc556e1bf2522177787c0de2e0d4373ba885c9"
+  integrity sha1-jLxVbhvyUiF3eHwN4uDUNzuohck=
 
 performance-now@^2.1.0:
   version "2.1.0"
