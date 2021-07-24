@@ -2,10 +2,15 @@ import React from "react";
 import { Divider, Drawer, Statistic, Switch, Table, Typography } from "antd";
 import DatePicker from "./DatePicker";
 import dayjs from "dayjs";
+import weekday from "dayjs/plugin/weekday";
+import localeData from "dayjs/plugin/localeData";
 import { Chart, Line } from "bizcharts";
 import axios from "axios";
 import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
+
+dayjs.extend(weekday);
+dayjs.extend(localeData);
 
 const { Text, Title } = Typography;
 

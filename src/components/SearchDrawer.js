@@ -3,9 +3,14 @@ import { Button, Card, Drawer, Input, message, Select, Spin, Table, Typography }
 import DatePicker from "./DatePicker";
 import { LoadingOutlined, CrownFilled, InfoCircleOutlined } from '@ant-design/icons';
 import dayjs from "dayjs";
+import weekday from "dayjs/plugin/weekday";
+import localeData from "dayjs/plugin/localeData";
 import axios from "axios";
 import Swal from "sweetalert2";
 import PropTypes from 'prop-types';
+
+dayjs.extend(weekday);
+dayjs.extend(localeData);
 
 const { Search } = Input;
 const { Text, Paragraph } = Typography;

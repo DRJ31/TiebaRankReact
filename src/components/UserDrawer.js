@@ -3,10 +3,15 @@ import { Divider, Drawer, Progress, Statistic, Table, Typography, message } from
 import { UserOutlined, ArrowUpOutlined, ArrowDownOutlined, CopyOutlined, UserAddOutlined, CrownOutlined } from '@ant-design/icons';
 import DatePicker from "./DatePicker";
 import dayjs from "dayjs";
+import weekday from "dayjs/plugin/weekday";
+import localeData from "dayjs/plugin/localeData";
 import { Chart, Interval } from "bizcharts";
 import axios from "axios";
 import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
+
+dayjs.extend(weekday);
+dayjs.extend(localeData);
 
 const { Title } = Typography;
 
