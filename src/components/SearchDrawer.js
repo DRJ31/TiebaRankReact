@@ -236,7 +236,6 @@ class SearchDrawer extends React.Component {
             value={this.state.event_date}
             allowClear={false}
             placeholder="选择日期"
-            disabledDate={current => current > dayjs()}
             dateRender={current => {
               const days = this.props.days;
               const style = {};
