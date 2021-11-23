@@ -1,7 +1,7 @@
 import React from "react";
 import {Drawer, Table, message, Typography, Switch, Divider} from "antd";
 import dayjs from "dayjs";
-import { Chart, Line, Slider, Legend, Tooltip } from "bizcharts";
+import { Chart, Line, Slider, Legend, Tooltip, Interval } from "bizcharts";
 import duration from "dayjs/plugin/duration"
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -84,6 +84,44 @@ class IncomeDrawer extends React.Component {
                 type: '平均收入'
             }
             result.push(avg)
+        }
+        return result
+    }
+
+    solveMonth = () => {
+        const { month } = this.state
+        const result = []
+        for (let m of month) {
+            result.push({
+                date: dayjs(m.date).unix() * 1000,
+                income: m.income
+            })
+            console.log(dayjs(m.date + "01").format("YYYY-MM-DD"))
+        }
+
+        return result
+    }
+
+    solveIncome = () => {
+        const { month } = this.state;
+        return JSON.parse(JSON.stringify(month)).sort((a, b) => a.date - b.date)
+    }
+
+    solveCharacter = () => {
+        const { income } = this.state
+        const result = []
+        const data = JSON.parse(JSON.stringify(income)).sort((a, b) => dayjs(a.date) - dayjs(b.date))
+        for (let i of data) {
+            result.push({
+                name: i.short,
+                type: "五天总流水",
+                income: i.income
+            })
+            result.push({
+                name: i.short,
+                type: "峰值流水",
+                income: i.max
+            })
         }
         return result
     }
@@ -175,6 +213,24 @@ class IncomeDrawer extends React.Component {
                 </Chart>
                 <Divider />
                 <Title level={4}>5日流水统计</Title>
+                <Chart height={400} padding="auto" data={this.solveCharacter()} autoFit>
+                    <Interval
+                        adjust={[
+                            {
+                                type: 'dodge',
+                                marginRatio: 0,
+                            },
+                        ]}
+                        color="type"
+                        position="name*income"
+                    />
+                    <Slider
+                        start={0.8}
+                        padding={[0, 0, 0, 0]}
+                    />
+                    <Tooltip shared />
+                </Chart>
+                <br/>
                 <Table
                     dataSource={income}
                     columns={cols}
@@ -182,6 +238,18 @@ class IncomeDrawer extends React.Component {
                 />
                 <Divider />
                 <Title level={4}>每月流水统计</Title>
+                <Chart height={300} autoFit data={this.solveIncome()}>
+                    <Interval position="date*income" />
+                    <Slider
+                        start={0.8}
+                        padding={[0, 0, 0, 0]}
+                        formatter={(v) => {
+                            return dayjs(v).format("YYYY-MM")
+                        }}
+                    />
+                    <Tooltip shared/>
+                </Chart>
+                <br/>
                 <Table
                     dataSource={month}
                     columns={columns}
