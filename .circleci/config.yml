@@ -13,11 +13,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "f6:f7:d9:cf:34:03:0e:97:c1:d4:f3:88:d4:26:8f:95"
-      - run: |
-          sudo apt update
-          sudo apt install python3 python3-pip curl
-          pip3 install coscmd
-      - node/install-yarn
       - node/install-packages:
           pkg-manager: yarn
       - run: openssl aes-256-cbc -d -pbkdf2 -in encrypt.js.enc -out src/encrypt.js -k $DECRYPT_KEY
@@ -28,11 +23,6 @@ jobs:
           ssh-keyscan -t rsa $HOST >> ~/.ssh/known_hosts
           scp build.tar.xz $USER@$HOST:~
           ssh $USER@$HOST "export PASSWORD=$PASSWORD" < deploy.sh
-      - run: |
-          coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
-          coscmd delete -r /react/genshin/static -f
-          coscmd upload -r build/static /react/genshin/static
-          curl -L https://uich.cc/5iavbeH6 | bash
 
 workflows:
   version: 2
