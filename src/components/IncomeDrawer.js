@@ -20,6 +20,15 @@ const scale = {
     }
 };
 
+const incomeScale = {
+    income: {
+        alias: '流水'
+    },
+    date: {
+        formatter: time => dayjs(time).format('YY-MM')
+    }
+};
+
 class IncomeDrawer extends React.Component {
     state = {
         data: [],
@@ -96,7 +105,6 @@ class IncomeDrawer extends React.Component {
                 date: dayjs(m.date).unix() * 1000,
                 income: m.income
             })
-            console.log(dayjs(m.date + "01").format("YYYY-MM-DD"))
         }
 
         return result
@@ -212,7 +220,7 @@ class IncomeDrawer extends React.Component {
                     }} />
                 </Chart>
                 <Divider />
-                <Title level={4}>5日流水统计</Title>
+                <Title level={4}>角色池5日流水统计</Title>
                 <Chart height={400} padding="auto" data={this.solveCharacter()} autoFit>
                     <Interval
                         adjust={[
@@ -238,7 +246,7 @@ class IncomeDrawer extends React.Component {
                 />
                 <Divider />
                 <Title level={4}>每月流水统计</Title>
-                <Chart height={300} autoFit data={this.solveIncome()}>
+                <Chart height={300} autoFit data={this.solveIncome()} scale={incomeScale}>
                     <Interval position="date*income" />
                     <Slider
                         start={0.8}
