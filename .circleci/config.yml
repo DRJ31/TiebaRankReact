@@ -25,9 +25,9 @@ jobs:
       - run: |
           mv build/genshin.ico build/favicon.ico
           tar Jcvf build.tar.xz build/
-          ssh-keyscan -t rsa drj.app >> ~/.ssh/known_hosts
-          scp build.tar.xz demonist@drj.app:~
-          ssh demonist@drj.app < deploy.sh
+          ssh-keyscan -t rsa $HOST >> ~/.ssh/known_hosts
+          scp build.tar.xz $USER@$HOST:~
+          ssh $USER@$HOST "export PASSWORD=$PASSWORD" < deploy.sh
       - run: |
           coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
           coscmd delete -r /react/genshin/static -f
