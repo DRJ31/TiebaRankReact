@@ -70,7 +70,7 @@ class IncomeDrawer extends React.Component {
             .catch(err => {
                 this.props.changeLoading(false);
                 if (err.response) {
-                    message.error(err.response.data.message);
+                    message.error("Session已失效");
                 }
                 else {
                     message.error("获取数据失败")
@@ -142,7 +142,7 @@ class IncomeDrawer extends React.Component {
                 dataIndex: 'name',
                 render: (text, record) => {
                     const days = dayjs.duration(dayjs().diff(dayjs(record.date)))
-                    return days.days() > 5 || days.months() > 0 ? text : `${text}(${days.days()}天)`
+                    return days.days() >= 5 || days.months() > 0 ? text : `${text}(${days.days()}天)`
                 }
             },
             {
