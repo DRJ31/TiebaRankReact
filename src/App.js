@@ -71,6 +71,16 @@ class App extends React.Component {
     super(...props);
     const loading = { ...this.state.loading };
     const pageSize = window.localStorage.getItem("pageSize") || 10;
+    axios.get('https://api.drjchn.com/api/v2/tieba/anniversary')
+        .then(res => {
+          let anniversaries = res.data.anniversaries;
+          this.setState({ anniversaries });
+        });
+    axios.get('https://api.drjchn.com/api/v2/tieba/events')
+        .then(res => {
+          let days = res.data.days;
+          this.setState({ days });
+        });
     axios.get('https://api.drjchn.com/api/v2/tieba/users', {
       params: {
         page: 1,
@@ -80,16 +90,6 @@ class App extends React.Component {
     })
       .then(rsp => {
         loading.page = false;
-        axios.get('https://api.drjchn.com/api/v2/tieba/anniversary')
-          .then(res => {
-            let anniversaries = res.data.anniversaries;
-            this.setState({ anniversaries });
-          });
-        axios.get('https://api.drjchn.com/api/v2/tieba/events')
-          .then(res => {
-            let days = res.data.days;
-            this.setState({ days });
-          });
         const { pagination }= this.state;
         pagination.current = 1;
         pagination.total = rsp.data.total;
