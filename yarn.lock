@@ -199,10 +199,10 @@
     detect-browser "^5.0.0"
     tslib "^2.0.3"
 
-"@antv/g2@4.1.30":
-  version "4.1.30"
-  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-4.1.30.tgz#23cd24762032d3598b0883394713606353132937"
-  integrity sha512-AS4Q8IOgWRyfSJrQQ/3oxZEWS0w3vKuBheirQubn5E4JV9GtWN14SELmfBHepnYXX/W3gJ5k1oSwZ2zd+Oqf9A==
+"@antv/g2@4.1.32":
+  version "4.1.32"
+  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-4.1.32.tgz#ac0646d7cbb279f8100f4bd2a3a25ba6bacb98f2"
+  integrity sha512-vJC0LgFyCjN3RdPA6JOi59qC8O4Z70TqFh/th+kzdWlt9KXDJc3MBBYcJI97m1IlrT9XqTGKqkZyGduZw4HCoA==
   dependencies:
     "@antv/adjust" "^0.2.1"
     "@antv/attr" "^0.3.1"
@@ -241,10 +241,10 @@
     "@antv/util" "~2.0.5"
     tslib "^2.0.0"
 
-"@antv/g2plot@2.3.35":
-  version "2.3.35"
-  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.3.35.tgz#ba5b19347088985ec4c661b5ab2de4f6fdca0f4d"
-  integrity sha512-jSfZztjYR6Xyx+d0fqu+JW7BkrcAm24CSb9fWvZC/ZnnWHTyFbN4qOb+wF8fRo5hPtfnnL1bwsOjdqNSVN1Tdg==
+"@antv/g2plot@2.3.39":
+  version "2.3.39"
+  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.3.39.tgz#46b74bbd7ec12258ca762683adcd327848af4cee"
+  integrity sha512-B6/b+MiUOuO3vlvY19Qt0v+3B7ds72pxESI714hzuH2niXQ35AW8GaQ7+1U6Y7Kk7btoaB2AaCyWcvZuloWoPw==
   dependencies:
     "@antv/event-emitter" "^0.1.2"
     "@antv/g2" "^4.1.26"
@@ -2758,10 +2758,10 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-antd@^4.17.2:
-  version "4.17.2"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.17.2.tgz#c50123e6da990d8a41bc1ed6fbfc6d587b014ae0"
-  integrity sha512-1/xwj72mzg2ly5byvnxsgucEL5JMrinlsaAr4Y+vjobmTBSI9l9zOVkwwOG8kPIrFkhrzC1I42n6GZKnTwfZmg==
+antd@^4.17.3:
+  version "4.17.3"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.17.3.tgz#48e2cfaec75cb414782a16918c0f322af1f2d509"
+  integrity sha512-enA6rsOAGtw0uN+khzvPoCui9j6m1ZvtAHY2IWC/mOUIwfycC8iuToND9ptAqeNF5yX8RZhFubmcc7Xeqk6wWg==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.7.0"
@@ -2774,7 +2774,7 @@ antd@^4.17.2:
     lodash "^4.17.21"
     memoize-one "^6.0.0"
     moment "^2.25.3"
-    rc-cascader "~2.2.0"
+    rc-cascader "~2.3.0"
     rc-checkbox "~2.3.0"
     rc-collapse "~3.1.0"
     rc-dialog "~8.6.0"
@@ -2791,8 +2791,8 @@ antd@^4.17.2:
     rc-picker "~2.5.17"
     rc-progress "~3.1.0"
     rc-rate "~2.9.0"
-    rc-resize-observer "^1.0.0"
-    rc-select "~13.1.0-alpha.0"
+    rc-resize-observer "^1.1.0"
+    rc-select "~13.2.1"
     rc-slider "~9.7.4"
     rc-steps "~4.1.0"
     rc-switch "~3.2.0"
@@ -2801,7 +2801,7 @@ antd@^4.17.2:
     rc-textarea "~0.3.0"
     rc-tooltip "~5.1.1"
     rc-tree "~5.3.0"
-    rc-tree-select "~4.7.0"
+    rc-tree-select "~4.8.0"
     rc-trigger "^5.2.10"
     rc-upload "~4.3.0"
     rc-util "^5.14.0"
@@ -2893,16 +2893,13 @@ array-union@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/array-union/-/array-union-1.0.2.tgz#9a34410e4f4e3da23dea375be5be70f24778ec39"
   integrity sha1-mjRBDk9OPaI96jdb5b5w8kd47Dk=
+  dependencies:
+    array-uniq "^1.0.1"
 
 array-union@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
   integrity sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==
-
-array-uniq@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
-  integrity sha1-r2rId6Jcx/dOBYiUdThY39sk/bY=
 
 array-unique@^0.3.2:
   version "0.3.2"
@@ -3346,14 +3343,14 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bizcharts@^4.1.14:
-  version "4.1.14"
-  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-4.1.14.tgz#6ca03a11f668ec4c69ad56f8b665446574f65840"
-  integrity sha512-CKwRcm4QfgrdoldSOvVPkCCGE5IrHN1S3KSBEfGk9jXme5POH3S3RQAQVr2+IxMb6NugrdV0zesivPfSSReL+w==
+bizcharts@^4.1.15:
+  version "4.1.15"
+  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-4.1.15.tgz#f893a613e5d231fc9c5472932c478b6b01b42340"
+  integrity sha512-Tx7gQhtZCxi9k5uOmtp5z36Otw5qaKtpn4rB07ZMtZA82qidCb9aRYLfD6ceQjrrBBaFQt9MSiSP6AjH/Dic8g==
   dependencies:
     "@antv/component" "*"
-    "@antv/g2" "4.1.30"
-    "@antv/g2plot" "2.3.35"
+    "@antv/g2" "4.1.32"
+    "@antv/g2plot" "2.3.39"
     "@antv/util" "*"
     "@babel/plugin-transform-modules-commonjs" "^7.12.1"
     "@babel/plugin-transform-runtime" "^7.12.10"
@@ -3879,7 +3876,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@2.x, classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6:
+classnames@2.x, classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -10028,16 +10025,17 @@ rc-align@^4.0.0:
     rc-util "^5.3.0"
     resize-observer-polyfill "^1.5.1"
 
-rc-cascader@~2.2.0:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/rc-cascader/-/rc-cascader-2.2.1.tgz#ec6cfa9d631e6e787abedb2db8c6b014ba1e15b6"
-  integrity sha512-4saWcwpmxxh5fhUdaDgOLF2gWL8KNxLwWqELX702HNXEt2yU7AixjfvgEORNsnQZleT2W2AaGMkRDeWrwt8fMw==
+rc-cascader@~2.3.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/rc-cascader/-/rc-cascader-2.3.1.tgz#2c72f76fc948ed58874d1beac66d2904d95f9123"
+  integrity sha512-TY3c4ous8Y5zOrcMPq4jwXUITkmQrNyoGCfda1MRiEOFnfR0e4JSYRyZUylb9CohVPmktZ3Ptz82KmQ7qHNK6Q==
   dependencies:
     "@babel/runtime" "^7.12.5"
     array-tree-filter "^2.1.0"
-    rc-tree-select "~4.7.0"
+    classnames "^2.3.1"
+    rc-tree-select "~4.8.0"
     rc-trigger "^5.0.4"
-    rc-util "^5.0.1"
+    rc-util "^5.6.1"
     warning "^4.0.1"
 
 rc-checkbox@~2.3.0:
@@ -10218,10 +10216,20 @@ rc-resize-observer@^1.0.0:
     rc-util "^5.0.0"
     resize-observer-polyfill "^1.5.1"
 
-rc-select@~13.1.0-alpha.0:
-  version "13.1.1"
-  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-13.1.1.tgz#851315d08a743504db57c7a5358cc907b69b45a5"
-  integrity sha512-Oy4L27x5QgGR8902pw0bJVjrTWFnKPKvdLHzJl5pjiA+jM1hpzDfLGg/bY2ntk5ElxxQKZUwbFKUeqfCQU7SrQ==
+rc-resize-observer@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/rc-resize-observer/-/rc-resize-observer-1.1.1.tgz#ef666e38065f550730176404bae2ce8ca5fb1ac4"
+  integrity sha512-5A3B9ha297ItltzXl812WFE36SyRDTNclfrXE3FL1pEwXkBh7iSEzxjzfwsPeMcF9ahy3ZoxLgLuRksXBGGD6A==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.1"
+    rc-util "^5.15.0"
+    resize-observer-polyfill "^1.5.1"
+
+rc-select@~13.2.1:
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-13.2.1.tgz#d69675f8bc72622a8f3bc024fa21bfee8d56257d"
+  integrity sha512-L2cJFAjVEeDiNVa/dlOVKE79OUb0J7sUBvWN3Viav3XHcjvv9Ovn4D8J9QhBSlDXeGuczZ81CZI3BbdHD25+Gg==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
@@ -10301,14 +10309,14 @@ rc-tooltip@^5.0.1, rc-tooltip@~5.1.1:
     "@babel/runtime" "^7.11.2"
     rc-trigger "^5.0.0"
 
-rc-tree-select@~4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-4.7.0.tgz#4e612d5ba3f30a51f590e3c0e38e1e4c49f34aef"
-  integrity sha512-xcc2yPpQieTW6BcRkcKbT1dcAYCQ7ARtkoHlS9EsNdd6xgw9LA6rek6PMed8r/VRMfiKtWV4c4xijW5PI6s4Rw==
+rc-tree-select@~4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-4.8.0.tgz#bcbcfb45553f84a878e4ff037ff00b526a4afa62"
+  integrity sha512-evuVIF7GHCGDdvISdBWl4ZYmG/8foof/RDtzCu/WFLA1tFKZD77RRC3khEsjh4WgsB0vllLe7j+ODJ7jHRcDRQ==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
-    rc-select "~13.1.0-alpha.0"
+    rc-select "~13.2.1"
     rc-tree "~5.3.0"
     rc-util "^5.7.0"
 
@@ -10367,6 +10375,15 @@ rc-util@^5.14.0:
   version "5.15.0"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.15.0.tgz#3527bd6c5806cf04476e17a0c7bf094fc8ea4666"
   integrity sha512-8RI8sjOCXD3FhD3dzQNBQetpGol6BBd3sHQ/8jSGk9NPT0CH3JGtBfPODnASyE7AdDpCFQMOmgcp9CBs3S/1hg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
+rc-util@^5.15.0:
+  version "5.16.1"
+  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.16.1.tgz#374db7cb735512f05165ddc3d6b2c61c21b8b4e3"
+  integrity sha512-kSCyytvdb3aRxQacS/71ta6c+kBWvM1v8/2h9d/HaNWauc3qB8pLnF20PJ8NajkNN8gb+rR1l0eWO+D4Pz+LLQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
     react-is "^16.12.0"
@@ -11889,10 +11906,10 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-sweetalert2@^11.2.1:
-  version "11.2.1"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.2.1.tgz#40be6dfe91359c1133d55bf12fa2dbc0f8d6a53f"
-  integrity sha512-6O+Ftl3yCg58pUqMiEn58+p7bQd7h7YrAM1diSaTJcRPO23bcfVd2DI2hW3246XVlTgL+EauV76va6VN5LrfIw==
+sweetalert2@^11.3.0:
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.3.0.tgz#39be4b23a02be479f36441f3a5f16a5d6364aba3"
+  integrity sha512-C0TFp0VLxgx+PmhJ0mL8qzx+iYjnCLdDbvQHKY6KAGI+xwawMvLkStPgw2LmJl6itaDhR/qLQStPFIbr1VK9Ow==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
