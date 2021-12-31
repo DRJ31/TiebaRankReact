@@ -3407,10 +3407,10 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-antd@^4.18.1:
-  version "4.18.1"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.18.1.tgz#09256431b05f1dd877628b947dd39c63d1de0dd2"
-  integrity sha512-MbIdwtgCqoFJyQdG8fbTow9qFr+YR+4Z7Kq0FXcV9DF1BAkdjTUKkPBc0cJPPEtFQbRHUBFriyAaW9eGBJ1YUw==
+antd@^4.18.2:
+  version "4.18.2"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.18.2.tgz#e4d03b2229b1f4b3b204e5e5539693aa653d3b7e"
+  integrity sha512-omezo7dtskrfGoSOoHYbA2jyaSVDd2UsxS5WM8GWyuIDtguMqlTDFKF/5204s3IjXnSUiJLOuDOWSLPMyVwHrA==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.7.0"
@@ -10418,10 +10418,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-sweetalert2@^11.3.1:
-  version "11.3.1"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.3.1.tgz#66fb0a64dd1f95a69a5cf19e63f1bbf14bc19cc4"
-  integrity sha512-p+8lC/j+x1Fi5RY77f0h4gYAIC9zC8eG+wfKt/CmxolGB8PK2yvEgJ3Gqa1wY6OkzH6Mm3MYbVCgj7IwyoID6g==
+sweetalert2@^11.3.2:
+  version "11.3.2"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.3.2.tgz#05937935945359b29d8efb475a202af3e599a138"
+  integrity sha512-V2JjWX/WHIZKJwirFrH9bFCHUaQlOGPHtciLWmX8sbrnJwLwQXTReJt1a4g+0YERbfjl5aSR+Vvmj6yNPNXZ5w==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
