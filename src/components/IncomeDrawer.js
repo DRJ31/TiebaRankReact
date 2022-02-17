@@ -142,7 +142,7 @@ class IncomeDrawer extends React.Component {
                 dataIndex: 'name',
                 render: (text, record) => {
                     const days = dayjs.duration(dayjs().diff(dayjs(record.date)))
-                    return days.days() >= 5 || days.months() > 0 ? text : `${text}(${days.days()}天)`
+                    return days.days() >= 5 || days.months() > 0 || days.years() > 0 ? text : `${text}(${days.days()}天)`
                 }
             },
             {
