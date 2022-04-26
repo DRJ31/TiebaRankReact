@@ -104,9 +104,10 @@ class App extends React.Component {
           results: rsp.data.users
         });
       }).catch(err => {
-      loading.page = false;
-      this.setState({ loading });
-      message.error("页面加载失败");
+        console.log(err);
+        loading.page = false;
+        this.setState({ loading });
+        message.error("页面加载失败");
     });
   }
 
@@ -151,6 +152,7 @@ class App extends React.Component {
         spin: false
       });
     }).catch(err => {
+      console.log(err);
       this.setState({ spin: false });
       message.error("加载失败");
     })
@@ -200,6 +202,7 @@ class App extends React.Component {
                 });
               });
             }).catch(err => {
+              console.log(err);
               loading.search = false;
               message.error("该用户不存在");
               this.setState({
