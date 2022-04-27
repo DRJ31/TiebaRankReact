@@ -3407,10 +3407,10 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-antd@^4.20.0:
-  version "4.20.0"
-  resolved "https://registry.npmmirror.com/antd/-/antd-4.20.0.tgz#5f5fa4fccb90dd3e091c8d6e9d503114d98d862f"
-  integrity sha512-Msowfvabsn/yJIo3qYU0vMqGb31OUylMeFRDilosBViG2AS8R2VB2IX53kbw4kFV3vr7fr2HXcuQkf/FMLU+Dg==
+antd@^4.20.1:
+  version "4.20.1"
+  resolved "https://registry.npmmirror.com/antd/-/antd-4.20.1.tgz#6cd5a406c7172d61a5d0693ea52ee908650cf674"
+  integrity sha512-asKxOV0a6AijqonbcXkO08/q+XvqS/HmGfaRIS6ZH1ALR3FS2q+kTW52rJZO9rfoOb/ldPhEBVSWiNrbiB+uCQ==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.7.0"
@@ -3612,10 +3612,10 @@ axe-core@^4.3.5:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
   integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
 
-axios@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.npmmirror.com/axios/-/axios-0.27.0.tgz#973ca980dee9077410189340390ea77964af6b29"
-  integrity sha512-XV/WrPxXfzgZ8j4lcB5i6LyaXmi90yetmV/Fem0kmglGx+mpY06CiweL3YxU6wOTNLmqLUePW4G8h45nGZ/+pA==
+axios@^0.27.1:
+  version "0.27.1"
+  resolved "https://registry.npmmirror.com/axios/-/axios-0.27.1.tgz#badcc8cc38cfa812320221b600776452141ea5d4"
+  integrity sha512-ePNMai55xo5GsXajb/k756AqZqpqeDaGwGcdvbZLSSELbbYwsIn2jNmGfUPEwd8j/yu4OoMstLLIVa4t0MneEA==
   dependencies:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
@@ -9437,13 +9437,13 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-dom@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.npmmirror.com/react-dom/-/react-dom-18.0.0.tgz#26b88534f8f1dbb80853e1eabe752f24100d8023"
-  integrity sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw==
+react-dom@^18.1.0:
+  version "18.1.0"
+  resolved "https://registry.npmmirror.com/react-dom/-/react-dom-18.1.0.tgz#7f6dd84b706408adde05e1df575b3a024d7e8a2f"
+  integrity sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w==
   dependencies:
     loose-envify "^1.1.0"
-    scheduler "^0.21.0"
+    scheduler "^0.22.0"
 
 react-error-boundary@3.0.2:
   version "3.0.2"
@@ -9537,10 +9537,10 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.npmmirror.com/react/-/react-18.0.0.tgz#b468736d1f4a5891f38585ba8e8fb29f91c3cb96"
-  integrity sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A==
+react@^18.1.0:
+  version "18.1.0"
+  resolved "https://registry.npmmirror.com/react/-/react-18.1.0.tgz#6f8620382decb17fdc5cc223a115e2adbf104890"
+  integrity sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ==
   dependencies:
     loose-envify "^1.1.0"
 
@@ -9863,10 +9863,10 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-scheduler@^0.21.0:
-  version "0.21.0"
-  resolved "https://registry.npmmirror.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
-  integrity sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==
+scheduler@^0.22.0:
+  version "0.22.0"
+  resolved "https://registry.npmmirror.com/scheduler/-/scheduler-0.22.0.tgz#83a5d63594edf074add9a7198b1bae76c3db01b8"
+  integrity sha512-6QAm1BgQI88NPYymgGQLCZgvep4FyePDWFpXVK+zNSUgHwlqpJy8VEh8Et0KxTACS4VWwMousBElAZOH9nkkoQ==
   dependencies:
     loose-envify "^1.1.0"
 
