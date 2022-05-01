@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^4.20.1",
-    "axios": "^0.27.1",
+    "antd": "^4.20.2",
+    "axios": "^0.27.2",
     "bizcharts": "^4.1.15",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.1",
@@ -13,7 +13,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "sweetalert2": "^11.4.9",
+    "sweetalert2": "^11.4.10",
     "yarn": "^1.22.18"
   },
   "scripts": {
