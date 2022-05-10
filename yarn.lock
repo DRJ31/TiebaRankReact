@@ -324,7 +324,15 @@
     fecha "~4.2.0"
     tslib "^2.0.0"
 
-"@antv/util@*", "@antv/util@^2.0.0", "@antv/util@^2.0.7", "@antv/util@^2.0.9", "@antv/util@~2.0.0", "@antv/util@~2.0.12", "@antv/util@~2.0.3", "@antv/util@~2.0.5":
+"@antv/util@2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@antv/util/-/util-2.0.17.tgz#e8ef42aca7892815b229269f3dd10c6b3c7597a9"
+  integrity sha512-o6I9hi5CIUvLGDhth0RxNSFDRwXeywmt6ExR4+RmVAzIi48ps6HUy+svxOCayvrPBN37uE6TAc2KDofRo0nK9Q==
+  dependencies:
+    csstype "^3.0.8"
+    tslib "^2.0.3"
+
+"@antv/util@^2.0.0", "@antv/util@^2.0.7", "@antv/util@^2.0.9", "@antv/util@~2.0.0", "@antv/util@~2.0.12", "@antv/util@~2.0.3", "@antv/util@~2.0.5":
   version "2.0.13"
   resolved "https://registry.yarnpkg.com/@antv/util/-/util-2.0.13.tgz#7c2e701d89527116ec17cf5a400413c5c6afcb4d"
   integrity sha512-mfYL7K8XJIeDmal33K+6abr8Yb526YXKg5XQlddNo+X1Doll+gun6HxnbdySoLv21vW4bLkcbVPjqxWl7ZJAFA==
@@ -3407,10 +3415,10 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-antd@^4.20.2:
-  version "4.20.2"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.20.2.tgz#1ed2042a091eecfebd9650c014a1a2e57430ff2b"
-  integrity sha512-b+Gq1EY8LmcS/ARei/dGI0bWQlJ/j3f3oJ6XjM+ryyT5YWxvf7X3mGc++bTGuLmjn6+/icRL1zItIgcvplcomg==
+antd@^4.20.3:
+  version "4.20.3"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.20.3.tgz#21f77332d201ea9f1d76685ca9534b4796791c81"
+  integrity sha512-liZB/OguxPPNnssiR8UH5gjAV3LetsnA8K0G+VBVJkCZsU5QmCDL05d059Nu6iRD7FVg0drSONZQwvWD4pO4nw==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.7.0"
@@ -3853,15 +3861,15 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-bizcharts@^4.1.15:
-  version "4.1.15"
-  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-4.1.15.tgz#f893a613e5d231fc9c5472932c478b6b01b42340"
-  integrity sha512-Tx7gQhtZCxi9k5uOmtp5z36Otw5qaKtpn4rB07ZMtZA82qidCb9aRYLfD6ceQjrrBBaFQt9MSiSP6AjH/Dic8g==
+bizcharts@^4.1.16:
+  version "4.1.16"
+  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-4.1.16.tgz#0dac99a5875314e4328121e0ad23cfbbf3e9b0d0"
+  integrity sha512-AMwbNd2UF1/iPKFSA/T1o2PvtcGlNQWnxGToNdBwHNDmoUgMvxa7GuBNz5NNEt32ftt+Ra4m2fdgqK5mrj8C3Q==
   dependencies:
     "@antv/component" "*"
     "@antv/g2" "4.1.32"
     "@antv/g2plot" "2.3.39"
-    "@antv/util" "*"
+    "@antv/util" "2.0.17"
     "@babel/plugin-transform-modules-commonjs" "^7.12.1"
     "@babel/plugin-transform-runtime" "^7.12.10"
     "@juggle/resize-observer" "^3.3.1"
@@ -4665,6 +4673,11 @@ cssstyle@^2.3.0:
   dependencies:
     cssom "~0.3.6"
 
+csstype@^3.0.8:
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.11.tgz#d66700c5eacfac1940deb4e3ee5642792d85cd33"
+  integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
+
 d3-array@1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
@@ -4836,10 +4849,10 @@ dayjs@1.x:
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.5.tgz#5600df4548fc2453b3f163ebb2abbe965ccfb986"
   integrity sha512-BUFis41ikLz+65iH6LHQCDm4YPMj5r1YFLdupPIyM4SGcXMmtiLQ7U37i+hGS8urIuqe7I/ou3IS1jVc4nbN4g==
 
-dayjs@^1.11.1:
-  version "1.11.1"
-  resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.1.tgz#90b33a3dda3417258d48ad2771b415def6545eb0"
-  integrity sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==
+dayjs@^1.11.2:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.2.tgz#fa0f5223ef0d6724b3d8327134890cfe3d72fbe5"
+  integrity sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw==
 
 debug@2.6.9, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -10475,10 +10488,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-sweetalert2@^11.4.10:
-  version "11.4.10"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.10.tgz#d0f7733a0997aad18b81c6f6b39a01c3a6cb4e21"
-  integrity sha512-Ms3mryLA/c5+llHNY0I9KXU8bv0N1a874gZr7xMPOiSnLD9veHZA92nZvJOkuN1hrdcR8kyj4IN8tBxlAIjVww==
+sweetalert2@^11.4.13:
+  version "11.4.13"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.13.tgz#b261b6df9f0cd4b92b0bad10935f02bd85dfd842"
+  integrity sha512-xsz0r8DF0MXEIveThNaSva9Z3YPEPFrg5hP/Fpz1KgIFlh0Y07ZFyFyE/vamZjawo6T0r8EUtswqEoRykHPCnQ==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
