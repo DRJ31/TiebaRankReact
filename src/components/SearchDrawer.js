@@ -19,7 +19,7 @@ const { Option } = Select;
 class SearchDrawer extends React.Component {
   state = {
     keyword: '',
-    anniversary: "20190621",
+    anniversary: "20200928",
     anniversaries: [],
     drawer: false,
     loading: false,

@@ -73,7 +73,7 @@ class App extends React.Component {
     const pageSize = window.localStorage.getItem("pageSize") || 10;
     axios.get('https://api.drjchn.com/api/v2/tieba/anniversary')
         .then(res => {
-          let anniversaries = res.data.anniversaries;
+          let anniversaries = res.data.anniversaries.reverse();
           this.setState({ anniversaries });
         });
     axios.get('https://api.drjchn.com/api/v2/tieba/events')
