@@ -40,6 +40,11 @@ class SearchDrawer extends React.Component {
       )
     },
     {
+      title: '日期',
+      dataIndex: 'date',
+      render: (text, record) => `${dayjs(text).format("YYYY年MM月DD日")}`
+    },
+    {
       title: '描述',
       dataIndex: 'date',
       render: (text, record) => `已${record.adj}${this.state.event_date.diff(dayjs(text), "days") + 1}天`
