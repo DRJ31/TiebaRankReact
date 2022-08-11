@@ -3429,10 +3429,10 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-antd@^4.22.3:
-  version "4.22.3"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.22.3.tgz#c6d4ced17e9c21b55c6234595d962c5f9d6768db"
-  integrity sha512-Nay1tO+G5Z9szmshK9TinOWclJnxOtSe7cr15EX64NGkZZyRoHX2xXOFQoYtBt4qfVfFvLf97m9on7fwgy1Svg==
+antd@^4.22.4:
+  version "4.22.4"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.22.4.tgz#38b375f93ac5f5e3e6b73bb7029f9c38f8ed157f"
+  integrity sha512-u7l68PhSJMxyZmCNw+jwaeurSAaE+bU+lB0SPRHLfOFJR6xRudntvRoQdiEFOD5FZ3eeqz4lYQ3RZZRIarmceg==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.7.0"
@@ -3454,7 +3454,7 @@ antd@^4.22.3:
     rc-image "~5.7.0"
     rc-input "~0.0.1-alpha.5"
     rc-input-number "~7.3.5"
-    rc-mentions "~1.9.0"
+    rc-mentions "~1.9.1"
     rc-menu "~9.6.0"
     rc-motion "^2.6.1"
     rc-notification "~4.6.0"
@@ -3875,10 +3875,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-bizcharts@^4.1.19:
-  version "4.1.19"
-  resolved "https://registry.npmmirror.com/bizcharts/-/bizcharts-4.1.19.tgz#2703b1a3d99864dbed488d629eb66d3cab36f9ba"
-  integrity sha512-ML4SpDLrDQbDnIAxmiU+t8Fll78JxAr39Q+I8DMTKHi5IRU2uevZT+h9M4SGpOQVKaXnmLypmqzEcK79yQNrQQ==
+bizcharts@^4.1.20:
+  version "4.1.20"
+  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-4.1.20.tgz#e7962439ec56d3c453691ab496c75af97b4bac65"
+  integrity sha512-J9Y6cCJ+qj5Smv9vfaPTdwS88ESRmZ/gRX5wltN+gSoph38Cz42CIBFLrHCU8k9cVht+HERtG/EQBKYr98uAPA==
   dependencies:
     "@antv/component" "*"
     "@antv/g2" "4.1.32"
@@ -9081,10 +9081,10 @@ rc-input@~0.0.1-alpha.5:
     classnames "^2.2.1"
     rc-util "^5.18.1"
 
-rc-mentions@~1.9.0:
-  version "1.9.0"
-  resolved "https://registry.npmmirror.com/rc-mentions/-/rc-mentions-1.9.0.tgz#0ddff6ab442dce58efa7b9f5ae561b0051173334"
-  integrity sha512-CSC2t8WxK8daS8lylJcquzCgKz4bXLAVNrSHXlTI8fNUy4toot8Sv79wT4fcP/bYgdt07/e3RXzkZfX6xjYYow==
+rc-mentions@~1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/rc-mentions/-/rc-mentions-1.9.1.tgz#769ea05981af917603d1e2815a8f3ecc02fbf9d1"
+  integrity sha512-6VBaEkJjYdGGxAygQvE2NaIegAzLJSDodgzpoV+vonUUCZ4A/d8izVlc2JqCYa0Yi15HiDcWyfRgJYI7OKTILg==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.6"
@@ -10551,10 +10551,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-sweetalert2@^11.4.24:
-  version "11.4.24"
-  resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.4.24.tgz#9dbe1e3096d6fd739e03d5c5fe2d218638fceaf4"
-  integrity sha512-wbD3SbaOhWyebVfnrY9rMjjVf7ZKUHjmn5Ch83NWUg84b/SYn0N4F0Dhxq3QYSAbnAQ7ArovQb2JfxZi5+Ieug==
+sweetalert2@^11.4.26:
+  version "11.4.26"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.26.tgz#a09aa01dda9b430f411531c8e2e998e3bc92ab17"
+  integrity sha512-YqH/C6IPudeWVK9R0x3pCOqP7m90Ae50tl98SQBpAwL3+UBl1WYD2+5OaKy0ybiVTKbYe76wwJ3PV+bITLjl+A==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
