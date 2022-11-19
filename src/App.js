@@ -6,11 +6,11 @@ import UserDrawer from "./components/UserDrawer";
 import PostsDrawer from "./components/PostsDrawer";
 import IncomeDrawer from "./components/IncomeDrawer";
 import PropTypes  from 'prop-types';
+import { PageHeader } from "@ant-design/pro-components"
 import {
   Button,
   Layout,
   message,
-  PageHeader,
   Row,
   Skeleton,
   Spin,

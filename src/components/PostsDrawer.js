@@ -1,6 +1,5 @@
 import React from "react";
-import { Divider, Drawer, Statistic, Switch, Table, Typography } from "antd";
-import DatePicker from "./DatePicker";
+import { Divider, Drawer, Statistic, Switch, Table, Typography, DatePicker } from "antd";
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
@@ -160,7 +159,7 @@ class PostsDrawer extends React.Component {
           range.end = 8
           this.setState({ drawer: false, range });
         }}
-        visible={drawer}
+        open={drawer}
         style={{ textAlign: 'center' }}
       >
         <Text style={{ marginRight: 10 }}>详细数据</Text>

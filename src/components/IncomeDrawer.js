@@ -184,7 +184,7 @@ class IncomeDrawer extends React.Component {
             <Drawer
                 title="流水统计"
                 placement="right"
-                visible={visible}
+                open={visible}
                 width={window.outerWidth > 520 ? 500 : window.outerWidth}
                 onClose={() => {
                     this.setState({ visible: false })

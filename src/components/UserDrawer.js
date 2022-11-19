@@ -1,7 +1,6 @@
 import React from "react";
-import { Divider, Drawer, Progress, Statistic, Table, Typography, message } from "antd";
+import { Divider, Drawer, Progress, Statistic, Table, Typography, message, DatePicker } from "antd";
 import { UserOutlined, ArrowUpOutlined, ArrowDownOutlined, CopyOutlined, UserAddOutlined, CrownOutlined } from '@ant-design/icons';
-import DatePicker from "./DatePicker";
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
@@ -136,7 +135,7 @@ class UserDrawer extends React.Component {
         placement="right"
         width={window.outerWidth > 520 ? 500 : window.outerWidth}
         onClose={() => this.setState({ drawer: false })}
-        visible={drawer}
+        open={drawer}
         style={{ textAlign: 'center' }}
       >
         <DatePicker

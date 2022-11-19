@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Card, Drawer, Input, message, Select, Spin, Table, Typography } from "antd";
-import DatePicker from "./DatePicker";
+import { Button, Card, Drawer, Input, message, Select, Spin, Table, Typography, DatePicker } from "antd";
 import { LoadingOutlined, CrownFilled, InfoCircleOutlined } from '@ant-design/icons';
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
@@ -176,7 +175,7 @@ class SearchDrawer extends React.Component {
         placement="right"
         width={window.outerWidth > 520 ? 500 : window.outerWidth}
         onClose={() => this.setState({ visible: false })}
-        visible={visible}
+        open={visible}
         style={{ textAlign: 'center' }}
       >
         <Drawer
@@ -186,7 +185,7 @@ class SearchDrawer extends React.Component {
           onClose={() => {
             this.setState({ drawer: false });
           }}
-          visible={drawer}
+          open={drawer}
           style={{ textAlign: 'center' }}
         >
           <Table columns={this.cols} dataSource={this.props.anniversaries} rowKey='event' />
@@ -245,7 +244,7 @@ class SearchDrawer extends React.Component {
               const days = this.props.days;
               const style = {};
               if (days.indexOf(current.format("YYYY-MM-DD")) !== -1) {
-                style.border = '1px solid #1890ff';
+                style.border = '1px solid #1677ff';
                 style.borderRadius = '50%';
               }
               return (

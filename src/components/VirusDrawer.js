@@ -1,5 +1,5 @@
 import React from "react";
-import { BackTop, Col, Drawer, List, Row, Spin, Statistic, Table, Tabs, Tag, Timeline, Typography } from "antd";
+import { FloatButton, Col, Drawer, List, Row, Spin, Statistic, Table, Tabs, Tag, Timeline, Typography } from "antd";
 import { LoadingOutlined } from '@ant-design/icons';
 import dayjs from "dayjs";
 import axios from "axios";
@@ -161,7 +161,7 @@ class VirusDrawer extends React.Component {
         placement="right"
         width={window.outerWidth > 520 ? 500 : window.outerWidth}
         onClose={() => this.setState({ drawer: false, key: "1" })}
-        visible={drawer}
+        open={drawer}
         style={{ textAlign: 'center' }}
       >
         <Tabs
@@ -221,7 +221,7 @@ class VirusDrawer extends React.Component {
                 </Timeline.Item>
               ))}
             </Timeline>
-              <BackTop target={() => document.getElementById("tab")}/>
+              <FloatButton.BackTop target={() => document.getElementById("tab")}/>
             </div>
           </TabPane>
         </Tabs>
