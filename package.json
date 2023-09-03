@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^5.2.5",
-    "@ant-design/pro-components": "^2.6.14",
-    "antd": "^5.8.5",
+    "@ant-design/icons": "^5.2.6",
+    "@ant-design/pro-components": "^2.6.16",
+    "antd": "^5.8.6",
     "axios": "^1.5.0",
     "bizcharts": "^4.1.22",
     "crypto-js": "^4.1.1",
