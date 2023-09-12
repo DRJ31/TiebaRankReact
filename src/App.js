@@ -287,11 +287,11 @@ class App extends React.Component {
                   style={{ marginRight: 20 }}
                   onClick={() => this.state.drawer.search ? this.state.drawer.search.setState({ visible: true }) : () => {}}
                 >搜索</Button>
-                <Button
-                  onClick={() => this.state.drawer.users ? this.state.drawer.users.getStatisticalData(dayjs()) : () => {}}
-                  loading={loading.users}
-                  style={{ marginRight: 20 }}
-                >用户统计</Button>
+                {/*<Button*/}
+                {/*  onClick={() => this.state.drawer.users ? this.state.drawer.users.getStatisticalData(dayjs()) : () => {}}*/}
+                {/*  loading={loading.users}*/}
+                {/*  style={{ marginRight: 20 }}*/}
+                {/*>用户统计</Button>*/}
                 <Button
                   loading={loading.posts}
                   onClick={this.state.drawer.posts ? this.state.drawer.posts.getPostData : () => {}}
