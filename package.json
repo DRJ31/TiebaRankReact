@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
-    "@ant-design/pro-components": "^2.6.22",
-    "antd": "^5.9.2",
+    "@ant-design/pro-components": "^2.6.24",
+    "antd": "^5.9.3",
     "axios": "^1.5.0",
     "bizcharts": "^4.1.22",
     "crypto-js": "^4.1.1",
@@ -16,7 +16,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "sweetalert2": "^11.7.28",
+    "sweetalert2": "^11.7.29",
     "yarn": "^1.22.19"
   },
   "scripts": {
