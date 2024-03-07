@@ -1,35 +1,27 @@
 version: 2.1
-
-orbs:
-  node: circleci/node@5.0.2
-
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: 'lts'
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "f6:f7:d9:cf:34:03:0e:97:c1:d4:f3:88:d4:26:8f:95"
-      - node/install-packages:
-          pkg-manager: yarn
-      - run: openssl aes-256-cbc -d -pbkdf2 -in encrypt.js.enc -out src/encrypt.js -k $DECRYPT_KEY
-      - run: yarn build
-      - run: |
-          mv build/genshin.ico build/favicon.ico
-          tar Jcvf build.tar.xz build/
-          ssh-keyscan -t rsa $HOST >> ~/.ssh/known_hosts
-          scp build.tar.xz $USER@$HOST:~
-          ssh $USER@$HOST < deploy.sh
-          curl -L https://uich.cc/5iavbeH6 | bash
-
-workflows:
-  version: 2
-  master_build:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: master
+            - "SHA256:N14dawQw0mkucf+EuKqi98Z124GNapu4gc+yKHkaR9M"
+      - run:
+          name: Install Dependencies
+          command: |
+            openssl aes-256-cbc -d -pbkdf2 -in encrypt.js.enc -out src/encrypt.js -k $DECRYPT_KEY
+            yarn
+      - run:
+          name: Build Website
+          command: yarn build
+      - run:
+          name: Deploy
+          command: |
+            mv build/genshin.ico build/favicon.ico
+            tar Jcvf build.tar.xz build/
+            ssh-keyscan -t rsa $HOST >> ~/.ssh/known_hosts
+            scp build.tar.xz $USER@$HOST:~
+            ssh $USER@$HOST < deploy.sh
+            curl -L https://uich.cc/notify | bash
