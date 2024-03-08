@@ -164,6 +164,16 @@ class App extends React.Component {
     this.setState({ drawer });
   };
 
+  ttt1 = () => {
+    console.log(this.state.drawer.search);
+    this.state.drawer.search.setState({ visible: true });
+  }
+
+  ttt2 = () => {
+    console.log(this.state.drawer.income);
+    this.state.drawer.income.fetchData();
+  }
+
   render() {
     const { results, loading, contentHeight, spin, pagination } = this.state;
     const columns = [
@@ -285,7 +295,7 @@ class App extends React.Component {
                 <Button
                   type='primary'
                   style={{ marginRight: 20 }}
-                  onClick={() => this.state.drawer.search ? this.state.drawer.search.setState({ visible: true }) : () => {}}
+                  onClick={() => this.state.drawer.search ? this.ttt1() : () => {}}
                 >搜索</Button>
                 {/*<Button*/}
                 {/*  onClick={() => this.state.drawer.users ? this.state.drawer.users.getStatisticalData(dayjs()) : () => {}}*/}
@@ -299,7 +309,7 @@ class App extends React.Component {
                 >发帖统计</Button>
                 <Button
                     loading={loading.income}
-                    onClick={this.state.drawer.income ? this.state.drawer.income.fetchData : () => {}}
+                    onClick={this.state.drawer.income ? this.ttt2 : () => {}}
                     style={{ marginRight: 20, marginTop: window.outerWidth < 768 ? 10 : 0 }}
                 >流水统计</Button>
                 {/*<Button*/}
