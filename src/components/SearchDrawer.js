@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Drawer, Input, message, Select, Spin, Table, Typography, DatePicker } from "antd";
+import { Button, Card, Drawer, Input, message, Select, Spin, Table, Typography, DatePicker, Modal } from "antd";
 import { LoadingOutlined, CrownFilled, InfoCircleOutlined } from '@ant-design/icons';
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
@@ -34,7 +34,7 @@ class SearchDrawer extends React.Component {
       dataIndex: 'event',
       render: (text, record) => (
           <Button type="text"
-                  onClick={() => Swal.fire(text, record.description, 'info')}
+                  onClick={() => Modal.info({ title: text, content: record.description })}
           >{text}<InfoCircleOutlined style={{ color: "#3fc3ee" }} /></Button>
       )
     },
