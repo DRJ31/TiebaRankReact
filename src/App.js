@@ -297,11 +297,11 @@ class App extends React.Component {
                   onClick={this.state.drawer.posts ? this.state.drawer.posts.getPostData : () => {}}
                   style={{ marginRight: 20 }}
                 >发帖统计</Button>
-                <Button
-                    loading={loading.income}
-                    onClick={this.state.drawer.income ? this.state.drawer.income.fetchData : () => {}}
-                    style={{ marginRight: 20 }}
-                >流水统计</Button>
+                {/*<Button*/}
+                {/*    loading={loading.income}*/}
+                {/*    onClick={this.state.drawer.income ? this.state.drawer.income.fetchData : () => {}}*/}
+                {/*    style={{ marginRight: 20 }}*/}
+                {/*>流水统计</Button>*/}
                 {/*<Button*/}
                 {/*  type="danger"*/}
                 {/*  loading={loading.virus}*/}
