@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.8.2",
-    "@ant-design/pro-components": "^2.6.50",
-    "antd": "5.15.3",
+    "@ant-design/icons": "^4.8.3",
+    "@ant-design/pro-components": "^2.6.52",
+    "antd": "5.15.4",
     "axios": "^1.6.8",
     "bizcharts": "^4.1.23",
     "crypto-js": "^4.2.0",
@@ -15,7 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "sweetalert2": "^11.10.6"
+    "sweetalert2": "^11.10.7"
   },
   "scripts": {
     "start": "react-scripts start",
