@@ -5,7 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
     "@ant-design/pro-components": "^2.7.14",
-    "antd": "5.19.3",
+    "antd": "5.19.4",
     "axios": "^1.7.2",
     "bizcharts": "^4.1.23",
     "crypto-js": "^4.2.0",
