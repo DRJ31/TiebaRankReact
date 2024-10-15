@@ -34,10 +34,10 @@
   dependencies:
     "@ctrl/tinycolor" "^3.6.1"
 
-"@ant-design/cssinjs-utils@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmmirror.com/@ant-design/cssinjs-utils/-/cssinjs-utils-1.1.0.tgz#5e85c16c1695e692f550b3e4b156cf70cac0b873"
-  integrity sha512-E9nOWObXx7Dy7hdyuYlOFaer/LtPO7oyZVxZphh0CYEslr5EmhJPM3WI0Q2RBHRtYg6dSNqeSK73kvZjPN3IMQ==
+"@ant-design/cssinjs-utils@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmmirror.com/@ant-design/cssinjs-utils/-/cssinjs-utils-1.1.1.tgz#57abb43671023f937348bd33442862c60ac8e8b2"
+  integrity sha512-2HAiyGGGnM0es40SxdszeQAU5iWp41wBIInq+ONTCKjlSKOrzQfnw4JDtB8IBmqE6tQaEKwmzTP2LGdt5DSwYQ==
   dependencies:
     "@ant-design/cssinjs" "^1.21.0"
     "@babel/runtime" "^7.23.2"
@@ -3299,14 +3299,14 @@ ansi-styles@^6.1.0:
   resolved "https://registry.npmmirror.com/ansi-styles/-/ansi-styles-6.2.1.tgz#0e62320cf99c21afff3b3012192546aacbfb05c5"
   integrity sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==
 
-antd@5.21.3:
-  version "5.21.3"
-  resolved "https://registry.npmmirror.com/antd/-/antd-5.21.3.tgz#5f451960605d07ea593a1e996e3bf120e525a7f8"
-  integrity sha512-Yby3gU6jfuvhNFRPsrHB4Yc/G3LHLNHHy0kShwNmmZf1QTCiW5TmqP3DT5m/NHbJsTgEwJpwo3AaOWo+KQyEjw==
+antd@5.21.4:
+  version "5.21.4"
+  resolved "https://registry.npmmirror.com/antd/-/antd-5.21.4.tgz#c17a732fa26a4af1b21c72d08a92bc01c8f3e4d1"
+  integrity sha512-yMpwam1A4/RIIemJK0V3SpMAfgbBEM47OFzEYcEQPDP+B4ZAeviKOLaFFxUt/sxRCMeoALnJEK6Hb6qOqL0hbA==
   dependencies:
     "@ant-design/colors" "^7.1.0"
     "@ant-design/cssinjs" "^1.21.1"
-    "@ant-design/cssinjs-utils" "^1.1.0"
+    "@ant-design/cssinjs-utils" "^1.1.1"
     "@ant-design/icons" "^5.5.1"
     "@ant-design/react-slick" "~1.1.2"
     "@babel/runtime" "^7.25.6"
@@ -10463,10 +10463,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-sweetalert2@^11.14.2:
-  version "11.14.2"
-  resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.14.2.tgz#6300b220cbfe7a527edb311bc90f5a95fc2987e7"
-  integrity sha512-ZJcnp+akKLFDdwTJkayZCMWfdEOxxchInuJ8gz/Xlx/nrdTfAM3Sb+NBbBNdqcfXn0h1CamN+VKDxjP8xbWqrg==
+sweetalert2@^11.14.3:
+  version "11.14.3"
+  resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.14.3.tgz#b8c182d66ebc7afeb41f6f367e9ec03287059768"
+  integrity sha512-6NuBHWJCv2gtw4y8PUXLB41hty+V6U2mKZMAvydL1IRPcORR0yuyq3cjFD/+ByrCk3muEFggbZX/x6HwmbVfbA==
 
 swr@^2.0.0:
   version "2.2.5"
