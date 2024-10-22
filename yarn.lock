@@ -130,16 +130,16 @@
     rc-resize-observer "^1.0.0"
     rc-util "^5.4.0"
 
-"@ant-design/pro-components@^2.7.19":
-  version "2.7.19"
-  resolved "https://registry.npmmirror.com/@ant-design/pro-components/-/pro-components-2.7.19.tgz#197513f73d1463d70a60dda95c99ebc7a048dfee"
-  integrity sha512-C/xf7VhZEMZsphT9i6DsjjwQYAEj0u77n7WYtd9/HLfJyQ2h9maORnd1z+BSmBZ58IWb18wPbiODUjNXT/toMw==
+"@ant-design/pro-components@^2.7.18":
+  version "2.7.18"
+  resolved "https://registry.npmmirror.com/@ant-design/pro-components/-/pro-components-2.7.18.tgz#2a2c3765281e6c2ba2b510baad6e248fd2377b01"
+  integrity sha512-mby630STk+bpQJJE1/5pLhoLpnFIG6Hkd228MGN9BtrVfLg5crBHDZ8C6h7lAkf/8b7mvNPxXmUBtqrvUrefPg==
   dependencies:
     "@ant-design/pro-card" "2.8.8"
     "@ant-design/pro-descriptions" "2.5.53"
     "@ant-design/pro-field" "2.16.2"
     "@ant-design/pro-form" "2.30.2"
-    "@ant-design/pro-layout" "7.20.2"
+    "@ant-design/pro-layout" "7.20.1"
     "@ant-design/pro-list" "2.5.69"
     "@ant-design/pro-provider" "2.14.9"
     "@ant-design/pro-skeleton" "2.1.13"
@@ -197,10 +197,10 @@
     rc-resize-observer "^1.1.0"
     rc-util "^5.0.6"
 
-"@ant-design/pro-layout@7.20.2":
-  version "7.20.2"
-  resolved "https://registry.npmmirror.com/@ant-design/pro-layout/-/pro-layout-7.20.2.tgz#60f3c6a075148cacdd67605091d459aaff30fcf1"
-  integrity sha512-a97k8P2sbprPXcBOG8p1g/0bP5kLBiC3+GSj0oxSWjUelAKzI9Q448tLOIfLjDcokxOvPRCEcCAlRg+mCKZVPg==
+"@ant-design/pro-layout@7.20.1":
+  version "7.20.1"
+  resolved "https://registry.npmmirror.com/@ant-design/pro-layout/-/pro-layout-7.20.1.tgz#f1a749402dff5d4999f5be87a1bc4c0c629cc954"
+  integrity sha512-RPSifaKySvLiUakrI+X/Z96sJjGoz51aRK4imY+Lm7LlvjRD2raxO9MhIePZq74qOoRUTRxh9oqTxtRz/8gADw==
   dependencies:
     "@ant-design/icons" "^5.0.0"
     "@ant-design/pro-provider" "2.14.9"
@@ -211,7 +211,7 @@
     classnames "^2.3.2"
     lodash-es "^4.17.21"
     omit.js "^2.0.2"
-    path-to-regexp "8.0.0"
+    path-to-regexp "8.1.0"
     rc-resize-observer "^1.1.0"
     rc-util "^5.0.6"
     swr "^2.0.0"
@@ -3299,10 +3299,10 @@ ansi-styles@^6.1.0:
   resolved "https://registry.npmmirror.com/ansi-styles/-/ansi-styles-6.2.1.tgz#0e62320cf99c21afff3b3012192546aacbfb05c5"
   integrity sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==
 
-antd@5.21.4:
-  version "5.21.4"
-  resolved "https://registry.npmmirror.com/antd/-/antd-5.21.4.tgz#c17a732fa26a4af1b21c72d08a92bc01c8f3e4d1"
-  integrity sha512-yMpwam1A4/RIIemJK0V3SpMAfgbBEM47OFzEYcEQPDP+B4ZAeviKOLaFFxUt/sxRCMeoALnJEK6Hb6qOqL0hbA==
+antd@5.21.5:
+  version "5.21.5"
+  resolved "https://registry.npmmirror.com/antd/-/antd-5.21.5.tgz#c82f14b36f6821490ccd30d8befaa65a11b5e782"
+  integrity sha512-g/c8VkdruKDCVA6di9Ow1fG6dLtYJ1IOraPo7vXaY7DoQ56A3HExaFaH0fBEwTYKC0ICeftC4iA5eAjrF6/b9w==
   dependencies:
     "@ant-design/colors" "^7.1.0"
     "@ant-design/cssinjs" "^1.21.1"
@@ -3319,7 +3319,7 @@ antd@5.21.4:
     classnames "^2.5.1"
     copy-to-clipboard "^3.3.3"
     dayjs "^1.11.11"
-    rc-cascader "~3.28.1"
+    rc-cascader "~3.28.2"
     rc-checkbox "~3.3.0"
     rc-collapse "~3.8.0"
     rc-dialog "~9.6.0"
@@ -8100,10 +8100,10 @@ path-to-regexp@0.1.7:
   resolved "https://registry.npmmirror.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==
 
-path-to-regexp@8.0.0:
-  version "8.0.0"
-  resolved "https://registry.npmmirror.com/path-to-regexp/-/path-to-regexp-8.0.0.tgz#92076ec6b2eaf08be7c3233484142c05e8866cf5"
-  integrity sha512-GAWaqWlTjYK/7SVpIUA6CTxmcg65SP30sbjdCvyYReosRkk7Z/LyHWwkK3Vu0FcIi0FNTADUs4eh1AsU5s10cg==
+path-to-regexp@8.1.0:
+  version "8.1.0"
+  resolved "https://registry.npmmirror.com/path-to-regexp/-/path-to-regexp-8.1.0.tgz#4d687606ed0be8ed512ba802eb94d620cb1a86f0"
+  integrity sha512-Bqn3vc8CMHty6zuD+tG23s6v2kwxslHEhTj4eYaVKGIEB+YX/2wd0/rgXLFD9G9id9KCtbVy/3ZgmvZjpa0UdQ==
 
 path-type@^4.0.0:
   version "4.0.0"
@@ -8870,10 +8870,10 @@ raw-body@2.5.2:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-rc-cascader@~3.28.1:
-  version "3.28.1"
-  resolved "https://registry.npmmirror.com/rc-cascader/-/rc-cascader-3.28.1.tgz#ea8a3de60521290096bab7e3fbe8ca097b976468"
-  integrity sha512-9+8oHIMWVLHxuaapDiqFNmD9KSyKN/P4bo9x/MBuDbyTqP8f2/POmmZxdXWBO3yq/uE3pKyQCXYNUxrNfHRv2A==
+rc-cascader@~3.28.2:
+  version "3.28.2"
+  resolved "https://registry.npmmirror.com/rc-cascader/-/rc-cascader-3.28.2.tgz#91720d3498261a7bff9fffc953501a8830f601fb"
+  integrity sha512-8f+JgM83iLTvjgdkgU7GfI4qY8icXOBP0cGZjOdx2iJAkEe8ucobxDQAVE69UD/c3ehCxZlcgEHeD5hFmypbUw==
   dependencies:
     "@babel/runtime" "^7.12.5"
     array-tree-filter "^2.1.0"
@@ -10463,10 +10463,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-sweetalert2@^11.14.3:
-  version "11.14.3"
-  resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.14.3.tgz#b8c182d66ebc7afeb41f6f367e9ec03287059768"
-  integrity sha512-6NuBHWJCv2gtw4y8PUXLB41hty+V6U2mKZMAvydL1IRPcORR0yuyq3cjFD/+ByrCk3muEFggbZX/x6HwmbVfbA==
+sweetalert2@^11.14.4:
+  version "11.14.4"
+  resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.14.4.tgz#0186439674ea4f15991e41cea3af203ee497853c"
+  integrity sha512-8QMzjxCuinwm18EK5AtYvuhP+lRMRxTWVXy8om9wGlULsXSI4TD29kyih3VYrSXMMBlD4EShFvNC7slhTC7j0w==
 
 swr@^2.0.0:
   version "2.2.5"
