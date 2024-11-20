@@ -53,7 +53,7 @@ class IncomeDrawer extends React.Component {
         const startDate = "20200928"
         const endDate = dayjs().format("YYYYMMDD")
         const token = this.context.encrypt(startDate + endDate)
-        axios.get("https://api.drjchn.com/api/v2/tieba/income", {
+        axios.get("https://app.drjchn.com/api/v2/tieba/income", {
             params: {
                 token,
                 start: startDate,

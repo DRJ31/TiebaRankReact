@@ -80,7 +80,7 @@ class PostsDrawer extends React.Component {
     this.props.changeLoading(true);
     this.setState({ loading });
     NProgress.start();
-    axios.get('https://api.drjchn.com/api/v2/tieba/post', {
+    axios.get('https://app.drjchn.com/api/v2/tieba/post', {
       params: {
         date: dayjs().format('YYYY-MM-DD'),
         token: this.context.encrypt(dayjs().format('YYYY-MM-DD'))
@@ -93,7 +93,7 @@ class PostsDrawer extends React.Component {
         posts: rsp.data.total,
         day
       });
-      axios.get('https://api.drjchn.com/api/v2/tieba/posts', {
+      axios.get('https://app.drjchn.com/api/v2/tieba/posts', {
         params: {
           page: 0,
           token: this.context.encrypt(0)

@@ -83,7 +83,7 @@ class UserDrawer extends React.Component {
     this.setState({ day: date });
     this.props.changeLoading(true);
     NProgress.start();
-    axios.get('https://api.drjchn.com/api/v2/tieba/distribution', {
+    axios.get('https://app.drjchn.com/api/v2/tieba/distribution', {
       params: {
         token: this.context.encrypt(date.format("YYYY-MM-DD")),
         date: date.format("YYYY-MM-DD")

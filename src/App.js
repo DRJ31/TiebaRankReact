@@ -71,17 +71,17 @@ class App extends React.Component {
     super(...props);
     const loading = { ...this.state.loading };
     const pageSize = window.localStorage.getItem("pageSize") || 10;
-    axios.get('https://api.drjchn.com/api/v2/tieba/anniversary')
+    axios.get('https://app.drjchn.com/api/v2/tieba/anniversary')
         .then(res => {
           let anniversaries = res.data.anniversaries.reverse();
           this.setState({ anniversaries });
         });
-    axios.get('https://api.drjchn.com/api/v2/tieba/events')
+    axios.get('https://app.drjchn.com/api/v2/tieba/events')
         .then(res => {
           let days = res.data.days;
           this.setState({ days });
         });
-    axios.get('https://api.drjchn.com/api/v2/tieba/users', {
+    axios.get('https://app.drjchn.com/api/v2/tieba/users', {
       params: {
         page: 1,
         pageSize,
@@ -138,7 +138,7 @@ class App extends React.Component {
       pagination: pager,
       spin: true
     });
-    axios.get('https://api.drjchn.com/api/v2/tieba/users', {
+    axios.get('https://app.drjchn.com/api/v2/tieba/users', {
       params: {
         page: pager.current,
         pageSize: pager.pageSize,
@@ -182,7 +182,7 @@ class App extends React.Component {
               spin: true,
               loading
             });
-            axios.post('https://api.drjchn.com/api/v2/tieba/user', {
+            axios.post('https://app.drjchn.com/api/v2/tieba/user', {
               link: record.link,
               token: encrypt(record.link)
             }).then(rsp => {

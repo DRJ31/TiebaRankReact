@@ -58,7 +58,7 @@ class SearchDrawer extends React.Component {
   componentDidMount() {
     this.context.onRef(this, 'search');
     const today = dayjs().format("YYYY-MM-DD");
-    axios.get('https://api.drjchn.com/api/v2/tieba/event', {
+    axios.get('https://app.drjchn.com/api/v2/tieba/event', {
       params: {
         date: today,
         token: this.context.encrypt(today)
@@ -75,7 +75,7 @@ class SearchDrawer extends React.Component {
       anniversary = "20190621"
     }
     this.setState({ event_date: date });
-    axios.get('https://api.drjchn.com/api/v2/tieba/event', {
+    axios.get('https://app.drjchn.com/api/v2/tieba/event', {
       params: {
         date: dateString,
         token: this.context.encrypt(dateString)
@@ -93,7 +93,7 @@ class SearchDrawer extends React.Component {
       return;
     }
     this.setState({ loading: true });
-    axios.get('https://api.drjchn.com/api/v2/tieba/user', {
+    axios.get('https://app.drjchn.com/api/v2/tieba/user', {
       params: {
         keyword: keyword,
         token: this.context.encrypt(keyword)
@@ -126,7 +126,7 @@ class SearchDrawer extends React.Component {
               spin: true,
               loading: true
             });
-            axios.post('https://api.drjchn.com/api/v2/tieba/user', {
+            axios.post('https://app.drjchn.com/api/v2/tieba/user', {
               link: record.link,
               token: this.context.encrypt(record.link)
             }).then(rsp => {
