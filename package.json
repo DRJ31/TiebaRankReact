@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
-    "@ant-design/pro-components": "^2.8.1",
-    "antd": "5.22.1",
+    "@ant-design/pro-components": "^2.8.2",
+    "antd": "5.22.2",
     "axios": "^1.7.7",
     "bizcharts": "^4.1.23",
     "crypto-js": "^4.2.0",
