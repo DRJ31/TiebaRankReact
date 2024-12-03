@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^5.5.1",
+    "@ant-design/icons": "^5.5.2",
     "@ant-design/pro-components": "^2.8.2",
-    "antd": "5.22.2",
-    "axios": "^1.7.7",
+    "antd": "5.22.3",
+    "axios": "^1.7.8",
     "bizcharts": "^4.1.23",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.13",
