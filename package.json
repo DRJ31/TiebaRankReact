@@ -5,7 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
     "@ant-design/pro-components": "^2.8.2",
-    "antd": "5.22.5",
+    "antd": "5.22.6",
     "axios": "^1.7.9",
     "bizcharts": "^4.1.23",
     "crypto-js": "^4.2.0",
@@ -15,7 +15,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "sweetalert2": "^11.15.0"
+    "sweetalert2": "^11.15.3"
   },
   "scripts": {
     "start": "react-scripts start",
