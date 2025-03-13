@@ -1,0 +1,26 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:N14dawQw0mkucf+EuKqi98Z124GNapu4gc+yKHkaR9M"
+      - run:
+          name: Install Dependencies
+          command: |
+            openssl aes-256-cbc -d -pbkdf2 -in encrypt.js.enc -out src/encrypt.js -k $DECRYPT_KEY
+            pnpm install
+      - run:
+          name: Build Website
+          command: pnpm build
+      - run:
+          name: Deploy
+          command: |
+            tar Jcvf dist.tar.xz dist/
+            ssh-keyscan -t rsa $HOST >> ~/.ssh/known_hosts
+            scp dist.tar.xz $USER@$HOST:~
+            ssh $USER@$HOST < deploy.sh
+            curl -L https://uich.cc/notify | bash
