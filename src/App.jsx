@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Genshin from './assets/genshin.png';
 import SearchDrawer from './components/SearchDrawer';
 import PostsDrawer from "./components/PostsDrawer";
-import { PageHeader } from "@ant-design/pro-components"
-import { Button, Layout, message, Row, Skeleton, Spin, Table, Typography } from 'antd';
+import { Avatar, Button, Layout, message, Row, Skeleton, Spin, Table, Typography } from 'antd';
 import { CrownFilled, LoadingOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -13,7 +12,7 @@ import 'dayjs/locale/zh-cn';
 import encrypt from "./encrypt";
 import 'nprogress/nprogress.css';
 
-const { Content } = Layout;
+const { Content, Header } = Layout;
 const { Text } = Typography;
 dayjs.locale('zh-cn');
 
@@ -95,9 +94,8 @@ function App() {
   };
 
   const handleTableChange = pg => {
-    const pager = pagination;
-    pager.current = pg.current;
-    pager.pageSize = pg.pageSize;
+    const prevPage = pagination.current;
+    const pager = { ...pagination, current: pg.current, pageSize: pg.pageSize };
     window.localStorage.setItem("pageSize", pg.pageSize);
     setSpin(true);
     setPagination(pager);
@@ -108,13 +106,13 @@ function App() {
         token: encrypt(pager.current)
       }
     }).then(rsp => {
-      pager.total = rsp.data.total;
-      setPagination(pager);
+      setPagination({ ...pager, total: rsp.data.total });
       setResults(rsp.data.users);
       setSpin(false);
     }).catch(err => {
       console.log(err);
       setSpin(false);
+      setPagination({ ...pager, current: prevPage });
       message.error("加载失败");
     })
   };
@@ -170,10 +168,10 @@ function App() {
 
   return (
     <Layout>
-      <PageHeader
-        avatar={{ src: Genshin }}
-        title='原神吧排行榜'
-      />
+      <Header style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '0 24px', background: '#fff' }}>
+        <Avatar src={Genshin} />
+        <Typography.Title level={4} style={{ margin: 0 }}>原神吧排行榜</Typography.Title>
+      </Header>
       <Layout>
         <Content style={{
           padding: 24,

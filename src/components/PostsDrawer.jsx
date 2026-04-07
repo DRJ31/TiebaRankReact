@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { DatePicker, Divider, Drawer, Statistic, Switch, Table, Typography } from "antd";
+import { DatePicker, Divider, Drawer, message, Statistic, Switch, Table, Typography } from "antd";
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
@@ -85,7 +85,17 @@ const PostsDrawer = (props) => {
         NProgress.done();
         setPostData(data);
         setDrawer(true);
+      }).catch(err => {
+        console.log(err);
+        props.changeLoading(false);
+        NProgress.done();
+        message.error("加载失败");
       });
+    }).catch(err => {
+      console.log(err);
+      props.changeLoading(false);
+      NProgress.done();
+      message.error("加载失败");
     });
   };
 

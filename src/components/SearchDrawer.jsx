@@ -237,18 +237,12 @@ const SearchDrawer = (props) => {
           value={eventDate}
           allowClear={false}
           placeholder="选择日期"
-          cellRender={current => {
-            const days = props.days;
-            const style = {};
-            if (days.indexOf(current.format("YYYY-MM-DD")) !== -1) {
-              style.border = '1px solid #1677ff';
-              style.borderRadius = '50%';
-            }
-            return (
-              <div className="ant-picker-cell-inner" style={style}>
-                {current.date()}
-              </div>
-            );
+          cellRender={(current, info) => {
+            if (info.type !== 'date') return info.originNode;
+            if (props.days.indexOf(current.format("YYYY-MM-DD")) === -1) return info.originNode;
+            return React.cloneElement(info.originNode, {
+              style: { border: '1px solid #1677ff', borderRadius: '50%' }
+            });
           }}
         />
         {events.length === 1 ? <Paragraph>{events[0]}</Paragraph> :
