@@ -13,7 +13,6 @@ dayjs.extend(localeData);
 
 const { Search } = Input;
 const { Text, Paragraph } = Typography;
-const { Option } = Select;
 
 const SearchDrawer = (props) => {
   // States
@@ -202,7 +201,7 @@ const SearchDrawer = (props) => {
         allowClear
       />
       <Spin
-        tip='加载中...'
+        description='加载中...'
         spinning={loading}
         indicator={<LoadingOutlined/>}
       >
@@ -220,14 +219,17 @@ const SearchDrawer = (props) => {
       <Card title="大事件">
         {eventDate >= dayjs('20190621') &&
           <div>
-            <Select value={anniversary} style={{ width: 100, marginRight: 10 }}
-                    onChange={setAnniversary}>
-              {props.anniversaries.map(ann => eventDate >= dayjs(ann.date) && (
-                <Option value={ann.date} key={ann.date}>
-                  {ann.event.match(/\(/g) ? ann.event.split("(")[0] : ann.event}
-                </Option>
-              ))}
-            </Select>
+            <Select
+              value={anniversary}
+              style={{ width: 100, marginRight: 10 }}
+              onChange={setAnniversary}
+              options={props.anniversaries
+                .filter(ann => eventDate >= dayjs(ann.date))
+                .map(ann => ({
+                  value: ann.date,
+                  label: ann.event.match(/\(/g) ? ann.event.split("(")[0] : ann.event
+                }))}
+            />
             <Text>第 {eventDate.diff(dayjs(anniversary), "days") + 1} 天</Text>
             <Button type="primary" style={{ marginLeft: 10 }} onClick={() => setDrawer(true)}>汇总</Button>
           </div>}

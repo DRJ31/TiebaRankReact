@@ -213,7 +213,7 @@ function App() {
               {/*>流水统计</Button>*/}
             </Row>
             <Spin
-              tip='加载中...'
+              description='加载中...'
               spinning={spin}
               indicator={<LoadingOutlined/>}
             >
@@ -223,7 +223,7 @@ function App() {
                 rowKey='rank'
                 pagination={pagination}
                 onChange={handleTableChange}
-                size={pagination.pageSize === 10 ? 'medium' : 'small'}
+                size={pagination.pageSize === 10 ? 'middle' : 'small'}
                 style={{
                   background: '#fff',
                   marginTop: 20
