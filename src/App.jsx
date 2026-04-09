@@ -184,7 +184,7 @@ function App() {
 
           <SearchDrawer days={days} anniversaries={anniversaries} trigger={searchTrigger}/>
 
-          <PostsDrawer changeLoading={setPostsLoading} trigger={postsTrigger}/>
+          {/* <PostsDrawer changeLoading={setPostsLoading} trigger={postsTrigger}/> */}
 
           {/*<IncomeDrawer changeLoading={setIncomeLoading} trigger={incomeTrigger}/>*/}
 
