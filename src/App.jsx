@@ -31,8 +31,8 @@ function App() {
   const [pagination, setPagination] = useState({});
   const [pageLoading, setPageLoading] = useState(true);
   const [searchTrigger, setSearchTrigger] = useState(false);
-  const [postsLoading, setPostsLoading] = useState(false);
-  const [postsTrigger, setPostsTrigger] = useState(false);
+  // const [postsLoading, setPostsLoading] = useState(false);
+  // const [postsTrigger, setPostsTrigger] = useState(false);
   // const [incomeLoading, setIncomeLoading] = useState(false);
   // const [incomeTrigger, setIncomeTrigger] = useState(false);
   // const [usersLoading, setUsersLoading] = useState(false);
@@ -201,11 +201,11 @@ function App() {
               {/*  loading={usersLoading}*/}
               {/*  style={{ marginRight: 20 }}*/}
               {/*>用户统计</Button>*/}
-              <Button
+              {/* <Button
                 loading={postsLoading}
                 onClick={() => setPostsTrigger(!postsTrigger)}
                 style={{ marginRight: 20 }}
-              >发帖统计</Button>
+              >发帖统计</Button> */}
               {/*<Button*/}
               {/*    loading={incomeLoading}*/}
               {/*    onClick={() => setIncomeTrigger(!incomeTrigger)}*/}
