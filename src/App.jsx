@@ -21,7 +21,11 @@ function App() {
   const [results, setResults] = useState([]);
   const [anniversaries, setAnniversaries] = useState([]);
   const [spin, setSpin] = useState(false);
-  const [contentHeight, setContentHeight] = useState(0);
+  const [contentHeight, setContentHeight] = useState(() => {
+    const h = window.innerHeight;
+    const w = window.innerWidth;
+    return w > 576 ? h - 80 : h - 64;
+  });
   const [userInfo, setUserInfo] = useState({
     link: '',
     title: '',
@@ -152,8 +156,8 @@ function App() {
       setPageLoading(false);
       message.error("页面加载失败");
     });
-    updateSize();
     window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, []);
 
   useEffect(() => {

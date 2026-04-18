@@ -73,12 +73,8 @@ const IncomeDrawer = (props) => {
 
     const solveData = () => {
         const result = []
-        for (let i = 0; i < data.length; i++) {
-            data[i].type = '实际收入'
-        }
-
         for (let d of data) {
-            result.push(d)
+            result.push({ ...d, type: '实际收入' })
             const avg = {
                 date: d.date,
                 income: average,

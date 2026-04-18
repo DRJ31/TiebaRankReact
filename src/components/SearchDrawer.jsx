@@ -167,6 +167,7 @@ const SearchDrawer = (props) => {
     if (isInitial.current) {
       if (props.trigger) {
         isInitial.current = false;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setVisible(true);
       }
       return;

@@ -27,14 +27,14 @@ const PostsDrawer = (props) => {
 
   // Functions
   const handleDateChange = (date, dateString, category) => {
-    const d = day;
+    const d = { ...day };
     category ? d.start = date : d.end = date;
     setDay(d);
     updateRange(d);
   };
 
   const updateRange = (d) => {
-    const ran = range;
+    const ran = { ...range };
     for (let i = 0; i < postData.length; i++) {
       if (dayjs(postData[i].date).format('YYYY-MM-DD') === dayjs(d.start).format('YYYY-MM-DD')) {
         ran.end = i + 1;
@@ -181,11 +181,8 @@ const PostsDrawer = (props) => {
       placement="right"
       width={window.outerWidth > 520 ? 500 : window.outerWidth}
       onClose={() => {
-        const ran = range;
-        ran.start = 1
-        ran.end = 8
         setDrawer(false);
-        setRange(ran);
+        setRange({ start: 1, end: 8 });
       }}
       open={drawer}
       style={{ textAlign: 'center' }}
