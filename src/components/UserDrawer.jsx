@@ -11,7 +11,7 @@ import {
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
-import { Chart, Interval } from "bizcharts";
+import { Column } from "@ant-design/plots";
 import axios from "axios";
 import NProgress from 'nprogress';
 import encrypt from "../encrypt";
@@ -172,22 +172,17 @@ const UserDrawer = (props) => {
       <Statistic value={data.average} prefix={<CopyOutlined />} style={{ marginTop: 10 }} />
       <Divider />
       <Title level={4}>等级分布</Title>
-      {/* <Chart height={300} data={distribution} scale={{ level: { range: [0.05, 1] } }} forceFit>
-          <Axis name="level" />
-          <Axis name="count" />
-          <Geom type="interval" position="level*count">
-            <Label content={['level*count', (name, value) => value]} />
-          </Geom>
-        </Chart> */}
-      <Chart
+      <Column
         height={300}
-        autoFit
         data={distribution}
-        scale={{ count: { alias: '人数' }, level: { alias: '等级' } }}
-        padding={[50,30,30,50]}
-      >
-        <Interval position="level*count" label="count" />
-      </Chart>
+        xField="level"
+        yField="count"
+        label={{ text: 'count', position: 'top' }}
+        axis={{
+          x: { title: '等级' },
+          y: { title: '人数' }
+        }}
+      />
       <Divider />
       <Title level={4}>等级排名</Title>
       <Table

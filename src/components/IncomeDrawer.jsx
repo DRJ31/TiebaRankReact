@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Divider, Drawer, message, Switch, Table, Typography } from "antd";
 import dayjs from "dayjs";
-import { Chart, Interval, Legend, Line, Slider, Tooltip } from "bizcharts";
+import { Column, Line } from "@ant-design/plots";
 import duration from "dayjs/plugin/duration"
 import axios from "axios";
 import encrypt from "../encrypt";
@@ -9,25 +9,6 @@ import encrypt from "../encrypt";
 dayjs.extend(duration)
 
 const { Title, Text } = Typography;
-
-const scale = {
-    income: {
-        alias: '流水'
-    },
-    date: {
-        type: 'time',
-        formatter: time => dayjs(time).format('YY-MM-DD')
-    }
-};
-
-const incomeScale = {
-    income: {
-        alias: '流水'
-    },
-    date: {
-        formatter: time => dayjs(time).format('YY-MM')
-    }
-};
 
 const IncomeDrawer = (props) => {
     // States
@@ -188,49 +169,31 @@ const IncomeDrawer = (props) => {
           <Switch checked={detail} onChange={() => setDetail(!detail)}/>
           <Divider />
           <Title level={4}>历史流水</Title>
-          <Chart
-            scale={scale}
-            padding={[0,30,50,80]}
-            autoFit
+          <Line
             height={300}
             data={solveData()}
-          >
-              <Line position="date*income" color="type" />
-              <Slider
-                start={0.5}
-                padding={[0, 0, 0, 0]}
-                formatter={(v) => {
-                    return dayjs(v).format("YYYY-MM-DD")
-                }}
-              />
-              <Tooltip shared showCrosshairs />
-              <Legend offsetY={-10} position="top-right" background={{
-                  padding:[5,100,5,20],
-                  style: {
-                      fill: '#eaeaea',
-                      stroke: '#fff'
-                  }
-              }} />
-          </Chart>
+            xField="date"
+            yField="income"
+            colorField="type"
+            shapeField="smooth"
+            axis={{
+                x: { labelFormatter: (datum) => dayjs(datum).format("YY-MM-DD") },
+                y: { title: '流水' }
+            }}
+            tooltip={{ shared: true }}
+          />
           <Divider />
           <Title level={4}>角色池5日流水统计</Title>
-          <Chart height={400} padding="auto" data={solveCharacter()} autoFit>
-              <Interval
-                adjust={[
-                    {
-                        type: 'dodge',
-                        marginRatio: 0,
-                    },
-                ]}
-                color="type"
-                position="name*income"
-              />
-              <Slider
-                start={0.8}
-                padding={[0, 0, 0, 0]}
-              />
-              <Tooltip shared />
-          </Chart>
+          <Column
+            height={400}
+            data={solveCharacter()}
+            xField="name"
+            yField="income"
+            colorField="type"
+            group
+            axis={{ y: { title: '流水' } }}
+            tooltip={{ shared: true }}
+          />
           <br/>
           <Table
             dataSource={income}
@@ -239,17 +202,17 @@ const IncomeDrawer = (props) => {
           />
           <Divider />
           <Title level={4}>每月流水统计</Title>
-          <Chart height={300} autoFit data={solveIncome()} scale={incomeScale}>
-              <Interval position="date*income" />
-              <Slider
-                start={0.8}
-                padding={[0, 0, 0, 0]}
-                formatter={(v) => {
-                    return dayjs(v).format("YYYY-MM")
-                }}
-              />
-              <Tooltip shared/>
-          </Chart>
+          <Column
+            height={300}
+            data={solveIncome()}
+            xField="date"
+            yField="income"
+            axis={{
+                x: { labelFormatter: (datum) => dayjs(datum).format("YYYY-MM") },
+                y: { title: '流水' }
+            }}
+            tooltip={{ shared: true }}
+          />
           <br/>
           <Table
             dataSource={month}
