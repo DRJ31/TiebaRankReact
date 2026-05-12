@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DatePicker, Divider, Drawer, message, Progress, Statistic, Table, Typography } from "antd";
+import type { TableColumnsType } from "antd";
 import {
   ArrowDownOutlined,
   ArrowUpOutlined,
@@ -9,19 +10,21 @@ import {
   UserOutlined
 } from '@ant-design/icons';
 import dayjs from "dayjs";
+import type { Dayjs } from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
 import { Column } from "@ant-design/plots";
 import axios from "axios";
 import NProgress from 'nprogress';
 import encrypt from "../encrypt";
+import type { DistributionRecord } from "../types";
 
 dayjs.extend(weekday);
 dayjs.extend(localeData);
 
 const { Title } = Typography;
 
-const selectColor = (num) => {
+const selectColor = (num: number) => {
   if (num > 0) {
     return "#cf1322"
   } else if (num < 0) {
@@ -31,7 +34,7 @@ const selectColor = (num) => {
   }
 }
 
-const cols = [
+const cols: TableColumnsType<DistributionRecord> = [
   {
     title: '等级',
     dataIndex: 'level'
@@ -43,29 +46,45 @@ const cols = [
   {
     title: '变化',
     dataIndex: 'delta',
-    render: text => (
+    render: (text: number) => (
       <Statistic
         value={Math.abs(text)}
         valueStyle={{
           color: selectColor(text),
           fontSize: 15
         }}
-        prefix={parseInt(text) !== 0 && (text > 0 ? <ArrowUpOutlined /> : <ArrowDownOutlined />)}
+        prefix={text !== 0 && (text > 0 ? <ArrowUpOutlined /> : <ArrowDownOutlined />)}
       />
     )
   }
 ];
 
-const UserDrawer = (props) => {
+interface UserDrawerProps {
+  changeLoading: (loading: boolean) => void;
+  trigger: boolean;
+}
+
+interface PercentState {
+  ten?: number;
+  membership?: number;
+  vip?: number;
+  signin?: number;
+}
+
+interface UserStatState {
+  membership: number;
+  vip: number;
+  ten: number;
+  total: number;
+  average: number;
+  signin: number;
+}
+
+const UserDrawer = (props: UserDrawerProps) => {
   // States
-  const [distribution, setDistribution] = useState([]);
-  const [percent, setPercent] = useState({
-    ten: null,
-    membership: null,
-    vip: null,
-    signin: null,
-  });
-  const [data, setData] = useState({
+  const [distribution, setDistribution] = useState<DistributionRecord[]>([]);
+  const [percent, setPercent] = useState<PercentState>({});
+  const [data, setData] = useState<UserStatState>({
     membership: 0,
     vip: 0,
     ten: 0,
@@ -77,7 +96,7 @@ const UserDrawer = (props) => {
   const [day, setDay] = useState(dayjs());
 
   // Functions
-  const getStatisticalData = (date) => {
+  const getStatisticalData = (date: Dayjs) => {
     setDay(date);
     props.changeLoading(true);
     NProgress.start();
@@ -87,25 +106,33 @@ const UserDrawer = (props) => {
         date: date.format("YYYY-MM-DD")
       }
     }).then(rsp => {
-      let dis = rsp.data.distribution;
+      const response = rsp.data as {
+        distribution: DistributionRecord[];
+        membership: number;
+        vip: number;
+        signin: number;
+        total: number;
+        posts: number;
+      };
+      const dis = response.distribution;
       dis[0].count = dis[0].rank;
       for (let i = 1; i < dis.length; i++) {
         dis[i].count = dis[i].rank - dis[i - 1].rank;
       }
-      for (let distribute of dis) {
+      for (const distribute of dis) {
         if (distribute.level === 10) {
           const pc = percent;
           const dt = data;
           dt.ten = distribute.rank;
-          dt.membership = rsp.data.membership;
-          dt.vip = rsp.data.vip;
-          dt.signin = rsp.data.signin;
-          dt.total = rsp.data.total;
-          dt.average = Number((rsp.data.posts / rsp.data.total).toFixed(2));
-          pc.ten = Number((distribute.rank / rsp.data.total * 100).toFixed(2));
-          pc.membership = Number((data.membership / rsp.data.total * 100).toFixed(2));
-          pc.vip = Number((rsp.data.vip / rsp.data.total * 100).toFixed(2));
-          pc.signin = Number((rsp.data.signin / rsp.data.total * 100).toFixed(2));
+          dt.membership = response.membership;
+          dt.vip = response.vip;
+          dt.signin = response.signin;
+          dt.total = response.total;
+          dt.average = Number((response.posts / response.total).toFixed(2));
+          pc.ten = Number((distribute.rank / response.total * 100).toFixed(2));
+          pc.membership = Number((dt.membership / response.total * 100).toFixed(2));
+          pc.vip = Number((response.vip / response.total * 100).toFixed(2));
+          pc.signin = Number((response.signin / response.total * 100).toFixed(2));
           props.changeLoading(false);
           NProgress.done();
           setDrawer(true);
@@ -143,7 +170,9 @@ const UserDrawer = (props) => {
       style={{ textAlign: 'center' }}
     >
       <DatePicker
-        onChange={getStatisticalData}
+        onChange={date => {
+          if (date) getStatisticalData(date);
+        }}
         disabledDate={current => current < dayjs('20191107') || current > dayjs()}
         value={day}
         allowClear={false}
@@ -164,9 +193,9 @@ const UserDrawer = (props) => {
       <Divider />
       <Title level={4}>签到人数</Title>
       <Progress type='circle' percent={percent.signin} strokeColor='#fa8c16'
-                format={percent => percent > 0 ? percent + '%' : 'NaN'} />
+                format={value => Number(value) > 0 ? value + '%' : 'NaN'} />
       <Statistic value={data.signin} prefix={<UserAddOutlined />} style={{ marginTop: 10 }}
-                 formatter={value => value > 0 ? value : '无数据'} />
+                 formatter={value => Number(value) > 0 ? value : '无数据'} />
       <Divider />
       <Title level={4}>人均发帖数</Title>
       <Statistic value={data.average} prefix={<CopyOutlined />} style={{ marginTop: 10 }} />

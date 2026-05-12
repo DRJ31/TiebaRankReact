@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            openssl aes-256-cbc -d -pbkdf2 -in encrypt.js.enc -out src/encrypt.js -k $DECRYPT_KEY
+            openssl aes-256-cbc -d -pbkdf2 -in encrypt.ts.enc -out src/encrypt.ts -k $DECRYPT_KEY
             pnpm install
       - run:
           name: Build Website

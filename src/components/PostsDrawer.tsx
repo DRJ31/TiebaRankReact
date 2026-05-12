@@ -1,39 +1,49 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DatePicker, Divider, Drawer, message, Statistic, Switch, Table, Typography } from "antd";
+import type { TableColumnsType } from "antd";
 import dayjs from "dayjs";
+import type { Dayjs } from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
 import { Line } from "@ant-design/plots";
+import type { LineConfig } from "@ant-design/plots";
 import axios from "axios";
 import NProgress from 'nprogress';
 import encrypt from "../encrypt";
+import type { DateRange, PostRecord } from "../types";
 
 dayjs.extend(weekday);
 dayjs.extend(localeData);
 
 const { Text, Title } = Typography;
 
-const PostsDrawer = (props) => {
+interface PostsDrawerProps {
+  changeLoading: (loading: boolean) => void;
+  trigger: boolean;
+}
+
+const PostsDrawer = (props: PostsDrawerProps) => {
   // States
   const [detail, setDetail] = useState(false);
   const [range, setRange] = useState({ start: 1, end: 8 });
   const [drawer, setDrawer] = useState(false);
-  const [postData, setPostData] = useState([]);
+  const [postData, setPostData] = useState<PostRecord[]>([]);
   const [posts, setPosts] = useState(0);
-  const [day, setDay] = useState({
+  const [day, setDay] = useState<DateRange>({
     start: dayjs().subtract(7, "days"),
     end: dayjs().subtract(1, "days")
   });
 
   // Functions
-  const handleDateChange = (date, dateString, category) => {
+  const handleDateChange = (date: Dayjs | null, category: "start" | "end") => {
+    if (!date) return;
     const d = { ...day };
-    category ? d.start = date : d.end = date;
+    d[category] = date;
     setDay(d);
     updateRange(d);
   };
 
-  const updateRange = (d) => {
+  const updateRange = (d: DateRange) => {
     const ran = { ...range };
     for (let i = 0; i < postData.length; i++) {
       if (dayjs(postData[i].date).format('YYYY-MM-DD') === dayjs(d.start).format('YYYY-MM-DD')) {
@@ -57,10 +67,11 @@ const PostsDrawer = (props) => {
         token: encrypt(dayjs().format('YYYY-MM-DD'))
       }
     }).then(rsp => {
+      const postResponse = rsp.data as { total: number };
       const d = day;
       d.end = dayjs().subtract(1, "days");
       d.start = dayjs().subtract(7, "days");
-      setPosts(rsp.data.total);
+      setPosts(postResponse.total);
       setDay(d);
       axios.get('https://app.drjchn.com/api/v2/tieba/posts', {
         params: {
@@ -69,17 +80,18 @@ const PostsDrawer = (props) => {
         }
       }).then(resp => {
         props.changeLoading(false);
-        let data = resp.data.results;
+        const postsResponse = resp.data as { results: Omit<PostRecord, "posts">[] };
+        const data = postsResponse.results as PostRecord[];
         for (let i = 0; i < data.length - 1; i++) {
           data[i].posts = data[i].total - data[i + 1].total;
           data[i].date = dayjs(data[i].date).valueOf();
         }
         data[data.length - 1].date = dayjs(data[data.length - 1].date).valueOf();
         data[data.length - 1].posts = data[data.length - 1].total;
-        const postNow = rsp.data.total - data[0].total;
+        const postNow = postResponse.total - data[0].total;
         data.splice(0, 0, {
           'date': dayjs().valueOf(),
-          'total': rsp.data.total,
+          'total': postResponse.total,
           'posts': postNow
         });
         NProgress.done();
@@ -100,30 +112,30 @@ const PostsDrawer = (props) => {
   };
 
   // Constants
-  const cols = [
+  const cols: TableColumnsType<PostRecord> = [
     {
       title: '日期',
       dataIndex: 'date',
-      render: text => {
+      render: (text: number) => {
         return dayjs(text).format('YYYY-MM-DD') + '(' + dayjs(text).format('dddd')[2] + ')';
       }
     },
     {
       title: '总帖数',
       dataIndex: 'total',
-      render: text => detail ? text : (text / 10000).toFixed(2) + "W"
+      render: (text: number) => detail ? text : (text / 10000).toFixed(2) + "W"
     },
     {
       title: '当日发帖数',
       dataIndex: 'posts',
-      render: text => detail ? text : (text / 10000).toFixed(2) + "W",
+      render: (text: number) => detail ? text : (text / 10000).toFixed(2) + "W",
       sorter: (a, b) => a.posts - b.posts,
       sortDirections: ['descend', 'ascend']
     }
   ];
 
-  const lineConfig = (yField) => {
-    const conf = {
+  const lineConfig = (yField: "total" | "posts"): LineConfig => {
+    const conf: LineConfig = {
       data: postData.slice(range.start, range.end),
       xField: 'date',
       yField,
@@ -134,11 +146,11 @@ const PostsDrawer = (props) => {
       },
       axis: {
         x: {
-          labelFormatter: (datum) => dayjs(datum).format('YY-MM-DD'),
+          labelFormatter: (datum: string | number) => dayjs(datum).format('YY-MM-DD'),
           labelAutoRotate: false,
         },
         y: {
-          labelFormatter: (datum) => detail ? datum : (datum / 10000) + "W"
+          labelFormatter: (datum: number) => detail ? datum : (datum / 10000) + "W"
         }
       },
       interaction: {
@@ -151,12 +163,15 @@ const PostsDrawer = (props) => {
       },
     }
     if (yField === "posts") {
-      conf["scale"] = {
+      conf.scale = {
         y: {
           domainMin: 0
         }
       }
-      conf["tooltip"]["items"] = [{ name: "单日发帖总数", channel: "y" }]
+      conf.tooltip = {
+        title: (d: PostRecord) => dayjs(d.date).format('YYYY-MM-DD'),
+        items: [{ name: "单日发帖总数", channel: "y" }]
+      }
     }
     return conf;
   };
@@ -194,12 +209,12 @@ const PostsDrawer = (props) => {
         title='总发帖数'
         value={posts}
         style={{ marginTop: 10 }}
-        formatter={value => detail ? value : (value / 10000).toFixed(2) + "W"}
+        formatter={value => detail ? value : (Number(value) / 10000).toFixed(2) + "W"}
       />
       <Divider/>
       <Title level={3}>发帖统计图表</Title>
       <DatePicker
-        onChange={((date, dateString) => handleDateChange(date, dateString, true))}
+        onChange={date => handleDateChange(date, "start")}
         value={day.start}
         allowClear={false}
         placeholder="选择起始日期"
@@ -207,7 +222,7 @@ const PostsDrawer = (props) => {
       />
       <DatePicker
         style={{ marginBottom: 20 }}
-        onChange={(date, dateString) => handleDateChange(date, dateString, false)}
+        onChange={date => handleDateChange(date, "end")}
         value={day.end}
         allowClear={false}
         placeholder="选择结束日期"

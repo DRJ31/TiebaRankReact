@@ -8,7 +8,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // 默认 vendor
           if (id.includes('node_modules')) return 'vendor';
         },
       },

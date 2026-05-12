@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Genshin from './assets/genshin.png';
 import SearchDrawer from './components/SearchDrawer';
-import PostsDrawer from "./components/PostsDrawer";
 import { Avatar, Button, Layout, message, Row, Skeleton, Spin, Table, Typography } from 'antd';
+import type { TableColumnsType, TablePaginationConfig, TableProps } from 'antd';
 import { CrownFilled, LoadingOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import encrypt from "./encrypt";
 import 'nprogress/nprogress.css';
+import type { Anniversary, UserDetail, UserRecord } from './types';
 
 const { Content, Header } = Layout;
 const { Text } = Typography;
@@ -18,8 +19,8 @@ dayjs.locale('zh-cn');
 
 function App() {
   // States
-  const [results, setResults] = useState([]);
-  const [anniversaries, setAnniversaries] = useState([]);
+  const [results, setResults] = useState<UserRecord[]>([]);
+  const [anniversaries, setAnniversaries] = useState<Anniversary[]>([]);
   const [spin, setSpin] = useState(false);
   const [contentHeight, setContentHeight] = useState(() => {
     const h = window.innerHeight;
@@ -31,8 +32,8 @@ function App() {
     title: '',
     text: ''
   });
-  const [days, setDays] = useState([]);
-  const [pagination, setPagination] = useState({});
+  const [days, setDays] = useState<string[]>([]);
+  const [pagination, setPagination] = useState<TablePaginationConfig>({});
   const [pageLoading, setPageLoading] = useState(true);
   const [searchTrigger, setSearchTrigger] = useState(false);
   // const [postsLoading, setPostsLoading] = useState(false);
@@ -43,7 +44,7 @@ function App() {
   // const [usersTrigger, setUsersTrigger] = useState(false);
 
   // Constants
-  const columns = [
+  const columns: TableColumnsType<UserRecord> = [
     {
       title: '排名',
       dataIndex: 'rank'
@@ -58,10 +59,11 @@ function App() {
             link: record.link,
             token: encrypt(record.link)
           }).then(rsp => {
+            const data = rsp.data as { user: UserDetail };
             const nickname = rsp.data.user.nickname;
             setSpin(false);
             setUserInfo({
-              link: rsp.data.user.avatar,
+              link: data.user.avatar,
               title: !record.member ? nickname :
                 '<span><i aria-label="icon: crown" class="anticon anticon-crown" style="color: rgb(255, 197, 61);"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="crown" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M899.6 276.5L705 396.4 518.4 147.5a8.06 8.06 0 0 0-12.9 0L319 396.4 124.3 276.5c-5.7-3.5-13.1 1.2-12.2 7.9L188.5 865c1.1 7.9 7.9 14 16 14h615.1c8 0 14.9-6 15.9-14l76.4-580.6c.8-6.7-6.5-11.4-12.3-7.9zM512 734.2c-62.1 0-112.6-50.5-112.6-112.6S449.9 509 512 509s112.6 50.5 112.6 112.6S574.1 734.2 512 734.2zm0-160.9c-26.6 0-48.2 21.6-48.2 48.3 0 26.6 21.6 48.3 48.2 48.3s48.2-21.6 48.2-48.3c0-26.6-21.6-48.3-48.2-48.3z"></path></svg></i> <span style="color: #f5222d">' + nickname + '</span></span>',
               text
@@ -97,21 +99,22 @@ function App() {
     setContentHeight(height);
   };
 
-  const handleTableChange = pg => {
+  const handleTableChange: TableProps<UserRecord>['onChange'] = pg => {
     const prevPage = pagination.current;
     const pager = { ...pagination, current: pg.current, pageSize: pg.pageSize };
-    window.localStorage.setItem("pageSize", pg.pageSize);
+    window.localStorage.setItem("pageSize", String(pg.pageSize));
     setSpin(true);
     setPagination(pager);
     axios.get('https://app.drjchn.com/api/v2/tieba/users', {
       params: {
         page: pager.current,
         pageSize: pager.pageSize,
-        token: encrypt(pager.current)
+        token: encrypt(pager.current ?? 1)
       }
     }).then(rsp => {
+      const data = rsp.data as { total: number; users: UserRecord[] };
       setPagination({ ...pager, total: rsp.data.total });
-      setResults(rsp.data.users);
+      setResults(data.users);
       setSpin(false);
     }).catch(err => {
       console.log(err);
@@ -123,14 +126,16 @@ function App() {
 
   // Use Effect
   useEffect(() => {
-    const pageSize = window.localStorage.getItem("pageSize") || 10;
+    const pageSize = Number(window.localStorage.getItem("pageSize") || 10);
     axios.get('https://app.drjchn.com/api/v2/tieba/anniversary')
       .then(res => {
-        setAnniversaries(res.data.anniversaries.reverse());
+        const data = res.data as { anniversaries: Anniversary[] };
+        setAnniversaries(data.anniversaries.reverse());
       });
     axios.get('https://app.drjchn.com/api/v2/tieba/events')
       .then(res => {
-        setDays(res.data.days);
+        const data = res.data as { days: string[] };
+        setDays(data.days);
       });
     axios.get('https://app.drjchn.com/api/v2/tieba/users', {
       params: {
@@ -140,17 +145,18 @@ function App() {
       }
     })
       .then(rsp => {
+        const data = rsp.data as { total: number; users: UserRecord[] };
         setPageLoading(false);
-        const pg = {};
+        const pg: TablePaginationConfig = {};
         pg.current = 1;
-        pg.total = rsp.data.total;
+        pg.total = data.total;
         pg.showQuickJumper = true;
         pg.size = "small";
         pg.showSizeChanger = true;
         pg.pageSizeOptions = ['10', '20'];
         pg.pageSize = pageSize;
         setPagination(pg);
-        setResults(rsp.data.users);
+        setResults(data.users);
       }).catch(err => {
       console.log(err);
       setPageLoading(false);

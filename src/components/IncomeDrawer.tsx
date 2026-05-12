@@ -1,20 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Divider, Drawer, message, Switch, Table, Typography } from "antd";
+import type { TableColumnsType } from "antd";
 import dayjs from "dayjs";
 import { Column, Line } from "@ant-design/plots";
 import duration from "dayjs/plugin/duration"
 import axios from "axios";
 import encrypt from "../encrypt";
+import type { CharacterIncomeRecord, IncomeChartRecord, IncomeRecord, MonthlyIncomeRecord } from "../types";
 
 dayjs.extend(duration)
 
 const { Title, Text } = Typography;
 
-const IncomeDrawer = (props) => {
+interface IncomeDrawerProps {
+    changeLoading: (loading: boolean) => void;
+    trigger: boolean;
+}
+
+const IncomeDrawer = (props: IncomeDrawerProps) => {
     // States
-    const [data, setData] = useState([]);
-    const [income, setIncome] = useState([]);
-    const [month, setMonth] = useState([]);
+    const [data, setData] = useState<MonthlyIncomeRecord[]>([]);
+    const [income, setIncome] = useState<IncomeRecord[]>([]);
+    const [month, setMonth] = useState<MonthlyIncomeRecord[]>([]);
     const [visible, setVisible] = useState(false);
     const [detail, setDetail] = useState(false);
     const [average, setAverage] = useState(0);
@@ -35,8 +42,13 @@ const IncomeDrawer = (props) => {
           .then(response => {
               setVisible(true);
               props.changeLoading(false);
-              const { data: dt, income: inc, average: avg, month: mon } = response.data;
-              mon.sort((a, b) => dayjs(b.date) - dayjs(a.date))
+              const { data: dt, income: inc, average: avg, month: mon } = response.data as {
+                  data: MonthlyIncomeRecord[];
+                  income: IncomeRecord[];
+                  average: number;
+                  month: MonthlyIncomeRecord[];
+              };
+              mon.sort((a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf())
               setData(dt);
               setIncome(inc);
               setAverage(avg);
@@ -53,8 +65,8 @@ const IncomeDrawer = (props) => {
     }
 
     const solveData = () => {
-        const result = []
-        for (let d of data) {
+        const result: IncomeChartRecord[] = []
+        for (const d of data) {
             result.push({ ...d, type: '实际收入' })
             const avg = {
                 date: d.date,
@@ -79,13 +91,13 @@ const IncomeDrawer = (props) => {
     // }
 
     const solveIncome = () => {
-        return JSON.parse(JSON.stringify(month)).sort((a, b) => a.date - b.date)
+        return [...month].sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf())
     }
 
     const solveCharacter = () => {
-        const result = []
-        const data = JSON.parse(JSON.stringify(income)).sort((a, b) => dayjs(a.date) - dayjs(b.date))
-        for (let i of data) {
+        const result: CharacterIncomeRecord[] = []
+        const chartData = [...income].sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf())
+        for (const i of chartData) {
             result.push({
                 name: i.short,
                 type: "五天总流水",
@@ -101,11 +113,11 @@ const IncomeDrawer = (props) => {
     }
 
     // Constants
-    const cols = [
+    const cols: TableColumnsType<IncomeRecord> = [
         {
             title: '卡池',
             dataIndex: 'name',
-            render: (text, record) => {
+            render: (text: string, record) => {
                 const days = dayjs.duration(dayjs().diff(dayjs(record.date)))
                 return days.days() >= 5 || days.months() > 0 || days.years() > 0 ? text : `${text}(${days.days()}天)`
             }
@@ -113,12 +125,12 @@ const IncomeDrawer = (props) => {
         {
             title: '日期',
             dataIndex: 'date',
-            render: text => dayjs(text).format("YYYY-MM-DD"),
+            render: (text: string | number) => dayjs(text).format("YYYY-MM-DD"),
         },
         {
             title: '流水总数',
             dataIndex: 'income',
-            render: text => detail ? text : (text / 10000).toFixed(2) + "W",
+            render: (text: number) => detail ? text : (text / 10000).toFixed(2) + "W",
             sorter: (a, b) => a.income - b.income
         },
         {
@@ -129,18 +141,18 @@ const IncomeDrawer = (props) => {
         }
     ];
 
-    const columns = [
+    const columns: TableColumnsType<MonthlyIncomeRecord> = [
         {
             title: '月份',
             dataIndex: 'date',
             key: 'date',
-            render: text => dayjs(text).format("YYYY-MM")
+            render: (text: string | number) => dayjs(text).format("YYYY-MM")
         },
         {
             title: '流水',
             dataIndex: 'income',
             key: 'income',
-            render: text => detail ? text : (text / 10000).toFixed(2) + "W",
+            render: (text: number) => detail ? text : (text / 10000).toFixed(2) + "W",
             sorter: (a, b) => a.income - b.income
         }
     ];
@@ -177,7 +189,7 @@ const IncomeDrawer = (props) => {
             colorField="type"
             shapeField="smooth"
             axis={{
-                x: { labelFormatter: (datum) => dayjs(datum).format("YY-MM-DD") },
+                x: { labelFormatter: (datum: string | number) => dayjs(datum).format("YY-MM-DD") },
                 y: { title: '流水' }
             }}
             tooltip={{ shared: true }}
@@ -208,7 +220,7 @@ const IncomeDrawer = (props) => {
             xField="date"
             yField="income"
             axis={{
-                x: { labelFormatter: (datum) => dayjs(datum).format("YYYY-MM") },
+                x: { labelFormatter: (datum: string | number) => dayjs(datum).format("YYYY-MM") },
                 y: { title: '流水' }
             }}
             tooltip={{ shared: true }}
