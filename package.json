@@ -11,31 +11,31 @@
   },
   "dependencies": {
     "@ant-design/charts": "^2.6.7",
-    "@ant-design/icons": "^6.2.2",
+    "@ant-design/icons": "^6.2.3",
     "@ant-design/plots": "^2.6.8",
-    "antd": "^6.3.7",
-    "axios": "^1.15.2",
+    "antd": "^6.4.2",
+    "axios": "^1.16.1",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.20",
     "nprogress": "^0.2.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "sweetalert2": "^11.26.24"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.8.0",
     "@types/nprogress": "^0.2.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^10.2.1",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.5.0",
+    "globals": "^17.6.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.1",
-    "vite": "^8.0.10"
+    "vite": "^8.0.13"
   }
 }
